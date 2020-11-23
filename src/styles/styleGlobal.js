@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         fontSize:16,
         top:150
     },
-    textExemplo
+    button
     :{
         backgroundColor:colors.primary,
         color:colors.backgroundView,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     :{
         bottom:50,
         width:140,
-        height:140
+        height:140 
     }
 
 });

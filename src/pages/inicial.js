@@ -19,17 +19,17 @@ export default function inicialScreen({ navigation }) {
         />
         <View >
           <TouchableOpacity
-          style={styleGlobal.textExemplo}
+          style={styleGlobal.button}
           onPress={() => navigation.navigate('loginCliente')}
           >
-          <Text style={styleGlobal.textExemplo}>SOU CLIENTE</Text>
+          <Text style={styleGlobal.button}>SOU CLIENTE</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-          style={styleGlobal.textExemplo}
+          style={styleGlobal.button}
           onPress={() => navigation.navigate('loginRestaurante')}
           >
-          <Text style={styleGlobal.textExemplo}>SOU RESTAURANTE</Text>
+          <Text style={styleGlobal.button}>SOU RESTAURANTE</Text>
           </TouchableOpacity> 
         </View>
         
