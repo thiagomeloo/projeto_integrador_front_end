@@ -2,7 +2,8 @@ import React from 'react'
 import {
   View,
   Text,
-  Button
+   TouchableOpacity,
+  Image
 } from 'react-native'
 
 //STYLES
@@ -12,13 +13,28 @@ import styleGlobal from '../styles/styleGlobal'
 export default function inicialScreen({ navigation }) {
     return (
       <View style={styleGlobal.container}>
-        <Text>pagina inicial</Text>
+        <Image
+        style={styleGlobal.icon}
+        source={require('../../assets/icon.png')}
+        />
+        <View >
+          <TouchableOpacity
+          style={styleGlobal.textExemplo}
+          onPress={() => navigation.navigate('loginCliente')}
+          >
+          <Text style={styleGlobal.textExemplo}>SOU CLIENTE</Text>
+          </TouchableOpacity>
 
-        <Button title="Login cliente"
-            onPress={() => navigation.navigate('loginCliente')}/>
-        <Button title="Login restaurante"
-            onPress={() => navigation.navigate('loginRestaurante')}/>
-
+          <TouchableOpacity
+          style={styleGlobal.textExemplo}
+          onPress={() => navigation.navigate('loginRestaurante')}
+          >
+          <Text style={styleGlobal.textExemplo}>SOU RESTAURANTE</Text>
+          </TouchableOpacity> 
+        </View>
+        
+  
       </View>
     )
 }
+
