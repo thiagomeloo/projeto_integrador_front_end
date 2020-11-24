@@ -18,7 +18,7 @@ import styleCadastro from '../styles/styleCadastro'
 export default function inicialScreen({ navigation }) {
     
     const [selectedValue, setSelectedValue] = useState("selecione");
-    const [selectedValueRegiao, setSelectedValueRegio] = useState("selecione");
+    const [selectedValueRegiao, setSelectedValueRegio] = useState("selecione"); //constante para o piker de região
     return (
       <View style={styleGlobal.container}>
         <Image
