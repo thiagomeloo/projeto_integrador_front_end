@@ -1,6 +1,5 @@
-import { Button, StyleSheet} from 'react-native'
-import { color, greaterThan } from 'react-native-reanimated';
-import { circle } from 'react-native/Libraries/Animated/src/Easing';
+import { StyleSheet} from 'react-native'
+
 
 import colors from './colors/colors'
 
@@ -73,8 +72,7 @@ const styles = StyleSheet.create({
     picker
     :{
         height:38,
-        color:colors.primary,
-        alignItems:"center"
+        color:colors.primary
     }
 
 
