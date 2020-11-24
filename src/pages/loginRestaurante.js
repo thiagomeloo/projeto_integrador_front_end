@@ -24,7 +24,7 @@ export default function loginScreen({ navigation }) {
         <View style={styleGlobal.view}>
           <TouchableOpacity
           style={styleGlobal.button}
-          onPress={() => navigation.navigate('inicial')}
+          onPress={() => navigation.navigate('finalizarCadastroRestaurante')}
           >
           <Text style={styleGlobal.button}>LOGIN COM GOOGLE</Text>
           </TouchableOpacity> 
