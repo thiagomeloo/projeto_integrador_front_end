@@ -18,7 +18,7 @@ export default function HomeScreen({ navigation }) {
         </Text>
         
         <Button title="ir para pagina inicial"
-            onPress={() => navigation.navigate('inicial')}/>
+            onPress={() => navigation.navigate('loginRestaurante')}/>
 
       </View>
     )
