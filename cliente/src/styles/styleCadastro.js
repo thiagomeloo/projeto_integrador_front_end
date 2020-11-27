@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     txtIcon:
     {
         color: colors.primary,
-        fontSize:16
+        fontSize:16,
+        bottom: 25
     },
     txt:
     {
@@ -24,13 +25,13 @@ const styles = StyleSheet.create({
     },
     icon
     :{
-        bottom:3,
+        bottom:30,
         width:80,
         height:80
     },
     Btn
     :{
-        top:30,
+        top:45,
         backgroundColor: colors.primary,
         color:colors.backgroundView,
         borderRadius: 16,
@@ -42,8 +43,8 @@ const styles = StyleSheet.create({
     },
     ViwInput
     :{
-        top:15,
         width:310,
+        bottom:20
     },
     imput
     :{
@@ -51,28 +52,42 @@ const styles = StyleSheet.create({
         borderColor: colors.primary,
         color:colors.primary,
         backgroundColor: colors.backgroundInput,
-        borderRadius:14,
+        borderRadius:5,
         borderWidth: 2,
         marginBottom: 5,
         paddingLeft:10,
         textAlign: 'left'
     },
-    pickerView
+    dropdown
     :{
-      borderWidth:2,
-      borderColor: colors.primary,
-      borderRadius:14,
-      color: colors.primary,
-      backgroundColor:colors.backgroundInput,
-      
+        backgroundColor:colors.backgroundInput,
+        borderWidth:2,
+        borderColor:colors.primary,
+        borderRadius:14
+       
     },
-    picker
+    dropdown_label
     :{
-        height:38,
-        color:colors.primary
-    }
-
-
+       color:colors.primary
+    },
+    dropdown_Container
+    :{
+        height:40,
+        marginBottom:3
+    },
+    dropdown_item
+    :{
+        justifyContent: 'flex-start',
+        backgroundColor:colors.backgroundInput,
+        marginBottom:10
+    },
+    dropdown_style
+    :{
+        backgroundColor:colors.backgroundInput,
+        borderColor:colors.primary,
+        borderWidth:2,
+       
+    },
 });
 
 export default styles
