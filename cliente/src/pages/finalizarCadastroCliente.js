@@ -63,7 +63,7 @@ export default function inicialScreen({ navigation }) {
               dropDownStyle={styleCadastro.dropdown_style}
               onChangeItem={item => setValorRegiao(item.value)}
               />
-            
+             
 
             <Text style={styleCadastro.txt}>REGIÃO:</Text>
             <DropDownPicker

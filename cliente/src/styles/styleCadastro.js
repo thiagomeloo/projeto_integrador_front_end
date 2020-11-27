@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     {
         color: colors.primary,
         fontSize:16,
-        bottom: 25
+        bottom: 20
     },
     txt:
     {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     },
     icon
     :{
-        bottom:30,
+        bottom:25,
         width:80,
         height:80
     },
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     ViwInput
     :{
         width:310,
-        bottom:20
+        bottom:10
     },
     imput
     :{
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     :{
         justifyContent: 'flex-start',
         backgroundColor:colors.backgroundInput,
-        marginBottom:10
+        marginBottom:15
     },
     dropdown_style
     :{
