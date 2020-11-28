@@ -62,6 +62,7 @@ export default function inicialScreen({ navigation }) {
               itemStyle={styleCadastro.dropdown_item}
               dropDownStyle={styleCadastro.dropdown_style}
               onChangeItem={item => setValorRegiao(item.value)}
+              zIndex={2}
               />
              
 
@@ -105,12 +106,13 @@ export default function inicialScreen({ navigation }) {
               itemStyle={styleCadastro.dropdown_item}
               dropDownStyle={styleCadastro.dropdown_style}
               onChangeItem={item => setValor(item.value)}
+              zIndex={1}
               />
             
         </View>
       
        
-        <View >
+        <View zIndex={-1}>
           <TouchableOpacity
           style={styleCadastro.Btn}
           onPress={() => navigation.navigate('main')}
