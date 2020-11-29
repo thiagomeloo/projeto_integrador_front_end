@@ -2,7 +2,7 @@ import React from 'react'
 import {
   View,
   Text,
-  Button
+  TouchableOpacity
 } from 'react-native'
 
 //STYLES
@@ -16,7 +16,14 @@ export default function RestauranteScreen({ navigation }) {
         <Text style={styleGlobal.textExemplo}> 
           Pagina opções
         </Text>
-
+        <View style={styleGlobal.view}>
+          <TouchableOpacity
+          style={styleGlobal.button,{top:40}}
+          onPress={() => navigation.navigate('cadastrarPratos')}
+          >
+          <Text style={styleGlobal.button}>CADASTRAR PRATOS</Text>
+          </TouchableOpacity> 
+        </View>
 
       </View>
     )

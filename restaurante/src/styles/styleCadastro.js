@@ -88,6 +88,21 @@ const styles = StyleSheet.create({
         borderWidth:2,
        
     },
+    textareaContainer: {
+        height: 180,
+        padding: 5,
+        backgroundColor: colors.backgroundInput,
+        borderColor: colors.primary,
+        borderWidth:2,
+        borderRadius:5,
+        
+      },
+      textarea: {
+        textAlignVertical: 'top',  // hack android
+        height: 170,
+        fontSize: 14,
+        color:colors.primary
+      },
 });
 
 export default styles
