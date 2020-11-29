@@ -14,19 +14,18 @@ const styles = StyleSheet.create({
     txtIcon:
     {
         color: colors.primary,
-        fontFamily:'Roboto',
-        fontSize:16
+        fontSize:16,
+        bottom: 20
     },
     txt:
     {
         color: colors.primary,
-        fontFamily:'Roboto',
         fontSize:16,
         paddingLeft:10
     },
     icon
     :{
-        bottom:3,
+        bottom:25,
         width:80,
         height:80
     },
@@ -39,14 +38,13 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight:20,
         textAlign: 'center',
-        fontFamily:'Roboto',
         fontSize: 18,
         margin:10
     },
     ViwInput
     :{
-        top:15,
         width:310,
+        bottom:10
     },
     imput
     :{
@@ -54,28 +52,42 @@ const styles = StyleSheet.create({
         borderColor: colors.primary,
         color:colors.primary,
         backgroundColor: colors.backgroundInput,
-        borderRadius:14,
+        borderRadius:5,
         borderWidth: 2,
         marginBottom: 5,
         paddingLeft:10,
         textAlign: 'left'
     },
-    pickerView
+    dropdown
     :{
-      borderWidth:2,
-      borderColor: colors.primary,
-      borderRadius:14,
-      color: colors.primary,
-      backgroundColor:colors.backgroundInput,
-      
+        backgroundColor:colors.backgroundInput,
+        borderWidth:2,
+        borderColor:colors.primary,
+        borderRadius:14
+       
     },
-    picker
+    dropdown_label
     :{
-        height:38,
-        color:colors.primary
-    }
-
-
+       color:colors.primary
+    },
+    dropdown_Container
+    :{
+        height:40,
+        marginBottom:3
+    },
+    dropdown_item
+    :{
+        justifyContent: 'flex-start',
+        backgroundColor:colors.backgroundInput,
+        marginBottom:15
+    },
+    dropdown_style
+    :{
+        backgroundColor:colors.backgroundInput,
+        borderColor:colors.primary,
+        borderWidth:2,
+       
+    },
 });
 
 export default styles

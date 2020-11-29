@@ -5,13 +5,13 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
-  Picker
+
 } from 'react-native'
 
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
 import styleCadastro from '../styles/styleCadastro'
-import colors from '../styles/colors/colors'
+
 
 import DropDownPicker from 'react-native-dropdown-picker'
 
@@ -55,13 +55,13 @@ export default function inicialScreen({ navigation }) {
               { label: 'FEMENINO', value: 'femenino'},
               { label: 'OUTRO', value: 'outro'}
               ]}
-              defaultValue={valorRegiao}
+              defaultValue={valor}
               style={styleCadastro.dropdown}
               labelStyle={styleCadastro.dropdown_label}
               containerStyle={styleCadastro.dropdown_Container}        
               itemStyle={styleCadastro.dropdown_item}
               dropDownStyle={styleCadastro.dropdown_style}
-              onChangeItem={item => setValorRegiao(item.value)}
+              onChangeItem={item => setValor(item.value)}
               zIndex={2}
               />
              
@@ -99,13 +99,13 @@ export default function inicialScreen({ navigation }) {
               { label: 'DF', value: 'DF'}
               
               ]}
-              defaultValue={valor}
+              defaultValue={valorRegiao}
               style={styleCadastro.dropdown}
               labelStyle={styleCadastro.dropdown_label}
               containerStyle={styleCadastro.dropdown_Container}        
               itemStyle={styleCadastro.dropdown_item}
               dropDownStyle={styleCadastro.dropdown_style}
-              onChangeItem={item => setValor(item.value)}
+              onChangeItem={item => setValorRegiao(item.value)}
               zIndex={1}
               />
             

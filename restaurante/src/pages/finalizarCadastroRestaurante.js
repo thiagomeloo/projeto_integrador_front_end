@@ -5,21 +5,19 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
-  Picker
 } from 'react-native'
 
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
 import styleCadastro from '../styles/styleCadastro'
-
+import DropDownPicker from 'react-native-dropdown-picker'
 
 
 
 
 export default function inicialScreen({ navigation }) {
     
-    const [selectedValue, setSelectedValue] = useState("selecione");
-    const [selectedValueRegiao, setSelectedValueRegio] = useState("selecione"); //constante para o piker de região
+    const [valorRegiao, setValorRegiao] = useState('selecione') //constante para o piker de região
     return (
       <View style={styleGlobal.container}>
         <Image
@@ -54,42 +52,50 @@ export default function inicialScreen({ navigation }) {
             />
 
             <Text style={styleCadastro.txt}>REGIÃO:</Text>
-            <View style={styleCadastro.pickerView}>
-              <Picker  selectedValue={selectedValueRegiao} 
-              onValueChange={(itemValue) => setSelectedValueRegio(itemValue)} style={styleCadastro.picker}>
-              <Picker.Item color='#cf4466' label="SELECIONE..." value="selecione" />
-              <Picker.Item color='#cf4466' label="AC" value="AC"  />
-              <Picker.Item color='#cf4466' label="AL" value="AL"  />
-              <Picker.Item color='#cf4466' label="AP" value="AP" />
-              <Picker.Item color='#cf4466' label="AM" value="AM" />
-              <Picker.Item color='#cf4466' label="BA" value="BA" />
-              <Picker.Item color='#cf4466' label="CE" value="CE" />
-              <Picker.Item color='#cf4466' label="ES" value="ES" />
-              <Picker.Item color='#cf4466' label="GO" value="GO" />
-              <Picker.Item color='#cf4466' label="MT" value="MA" />
-              <Picker.Item color='#cf4466' label="MS" value="MT" />
-              <Picker.Item color='#cf4466' label="MS" value="MS" />
-              <Picker.Item color='#cf4466' label="MG" value="MG" />
-              <Picker.Item color='#cf4466' label="PA" value="PA" />
-              <Picker.Item color='#cf4466' label="PB" value="PB" />
-              <Picker.Item color='#cf4466' label="PR" value="PR" />
-              <Picker.Item color='#cf4466' label="PE" value="PE" />
-              <Picker.Item color='#cf4466' label="PI" value="PI" />
-              <Picker.Item color='#cf4466' label="RJ" value="RJ" />
-              <Picker.Item color='#cf4466' label="RN" value="RN" />
-              <Picker.Item color='#cf4466' label="RO" value="RS" />
-              <Picker.Item color='#cf4466' label="RR" value="RR" />
-              <Picker.Item color='#cf4466' label="SC" value="SC" />
-              <Picker.Item color='#cf4466' label="SP" value="SP" />
-              <Picker.Item color='#cf4466' label="SE" value="SE" />
-              <Picker.Item color='#cf4466' label="TO" value="TO" />
-              <Picker.Item color='#cf4466' label="DF" value="DF" />
-              </Picker>
-            </View>
-        </View>
+            <DropDownPicker
+              items={[
+              { label: 'SELECIONE...',color:'red', value: 'selecione', hidden: true },
+              { label: 'AC', value: 'AC'},
+              { label: 'AL', value: 'AL'},
+              { label: 'AP', value: 'AP'},
+              { label: 'AM', value: 'AM'},
+              { label: 'BA', value: 'BA'},
+              { label: 'CE', value: 'CE'},
+              { label: 'ES', value: 'ES'},
+              { label: 'GO', value: 'GO'},
+              { label: 'MA', value: 'MA'},
+              { label: 'MT', value: 'MT'},
+              { label: 'MS', value: 'MS'},
+              { label: 'MG', value: 'MG'},
+              { label: 'PA', value: 'PA'},
+              { label: 'PB', value: 'PB'},
+              { label: 'PR', value: 'PR'},
+              { label: 'PE', value: 'PE'},
+              { label: 'PI', value: 'PI'},
+              { label: 'RJ', value: 'RJ'},
+              { label: 'RN', value: 'RN'},
+              { label: 'RS', value: 'RS'},
+              { label: 'RO', value: 'RO'},
+              { label: 'RR', value: 'RR'},
+              { label: 'SC', value: 'SC'},
+              { label: 'SP', value: 'SP'},
+              { label: 'SE', value: 'SE'},
+              { label: 'TO', value: 'TO'},
+              { label: 'DF', value: 'DF'}
+              
+              ]}
+              defaultValue={valorRegiao}
+              style={styleCadastro.dropdown}
+              labelStyle={styleCadastro.dropdown_label}
+              containerStyle={styleCadastro.dropdown_Container}        
+              itemStyle={styleCadastro.dropdown_item}
+              dropDownStyle={styleCadastro.dropdown_style}
+              onChangeItem={item => setValorRegiao(item.value)}
+              zIndex={2}
+              />
       
        
-        <View >
+        <View zIndex={1}>
           <TouchableOpacity
           style={styleCadastro.Btn}
           onPress={() => navigation.navigate('main')}
@@ -97,9 +103,9 @@ export default function inicialScreen({ navigation }) {
           <Text style={styleGlobal.button}>FINALIZAR</Text>
           </TouchableOpacity> 
         </View>
-        
-  
+      
       </View>
+    </View>
     )
 }
 
