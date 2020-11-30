@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     },
     Btn
     :{
-        top:30,
+        top:33,
         backgroundColor: colors.primary,
         color:colors.backgroundView,
         borderRadius: 16,

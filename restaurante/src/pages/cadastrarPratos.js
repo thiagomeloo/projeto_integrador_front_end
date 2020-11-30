@@ -54,7 +54,6 @@ export default function inicialScreen({ navigation }) {
         <Text style={styleCadastro.txt}>SERTE ATÉ:</Text>
             <TextInput style={styleCadastro.imput}
             
-            underlineColorAndroid={'transparent'}
             />
 
             <Text style={styleCadastro.txt}>DESCRIÇÃO:</Text>
