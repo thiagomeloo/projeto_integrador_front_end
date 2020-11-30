@@ -50,7 +50,7 @@ export default function mainScreen({ navigation }) {
       })}
       tabBarOptions={{
         activeTintColor: colors.primary,
-        inactiveTintColor: colors.primary,
+        inactiveTintColor: colors.secondary,
         showLabel:false,
         
         
