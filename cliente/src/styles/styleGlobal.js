@@ -1,7 +1,4 @@
 import { StyleSheet} from 'react-native'
-import { greaterThan } from 'react-native-reanimated';
-import { circle } from 'react-native/Libraries/Animated/src/Easing';
-
 import colors from './colors/colors'
 
 const styles = StyleSheet.create({
@@ -39,8 +36,8 @@ const styles = StyleSheet.create({
         bottom:50,
         width:140,
         height:140 
-    }
+    },
 
-});
+})
 
 export default styles
