@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
     txt:
     {
         color:colors.primary,
-        fontFamily:'Roboto',
         fontSize:16,
         top:150
     },
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight:20,
         textAlign: 'center',
-        fontFamily:'Roboto',
         fontSize: 18,
         margin:10
     },

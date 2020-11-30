@@ -5,14 +5,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons' 
 import { FontAwesome } from '@expo/vector-icons'
-
+import { MaterialIcons } from '@expo/vector-icons'
 //NAVIGATIONS
 const Tab = createBottomTabNavigator()
 
 //PAGES
-import opcoesPage from './opcoes'
+import pratosPage from './pratos'
 import reservaPage from './reservas'
 import perfilPage from './perfil'
+import mesasPage from './mesas'
+
 
 //STYLES - COLORS
 import colors from '../styles/colors/colors'
@@ -30,18 +32,23 @@ export default function mainScreen({ navigation }) {
           if (route.name === 'reserva') {
             typeIcon = 'antDesign'
             iconName = focused ? 'calendar' : 'calendar'
-          } else if (route.name === 'opcoes') {
+          } else if (route.name === 'pratos') {
             typeIcon = 'ionicons'
             iconName = focused ? 'ios-restaurant' : 'ios-restaurant'
           } else if (route.name === 'perfil') {
             typeIcon = 'fontAwesome'
             iconName = focused ? 'user-circle' : 'user-circle'
+          } else if (route.name === 'mesas') {
+            typeIcon = 'materialIcons'
+            iconName = focused ? 'format-list-bulleted' : 'format-list-bulleted'
           }
 
           if(typeIcon == 'antDesign'){
             return <AntDesign name={iconName} size={size} color={color} />
           }else if(typeIcon == 'fontAwesome'){
             return <FontAwesome name={iconName} size={size} color={color} />
+          }else if(typeIcon == 'materialIcons'){
+            return <MaterialIcons name={iconName} size={size} color={color} />
           }else{
             return <Ionicons name={iconName} size={size} color={color} />
           }
@@ -50,14 +57,13 @@ export default function mainScreen({ navigation }) {
       })}
       tabBarOptions={{
         activeTintColor: colors.primary,
-        inactiveTintColor: colors.primary,
+        inactiveTintColor: colors.secondary,
         showLabel:false,
         
-        
       }}>
-      
+      <Tab.Screen name="mesas" component={mesasPage} />
       <Tab.Screen name="reserva" component={reservaPage} />
-      <Tab.Screen name="opcoes" component={opcoesPage} />
+      <Tab.Screen name="pratos" component={pratosPage} />
       <Tab.Screen name="perfil" component={perfilPage} />
     </Tab.Navigator>
   )

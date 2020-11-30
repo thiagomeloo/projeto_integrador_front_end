@@ -9,16 +9,14 @@ import {
 import styleGlobal from '../styles/styleGlobal'
 
 
-export default function HomeScreen({ navigation }) {
+export default function MesaScreen({ navigation }) {
     return (
       <View style={styleGlobal.container}>
 
         <Text style={styleGlobal.textExemplo}> 
-          Pagina home
+          Pagina mesas
         </Text>
         
-        <Button title="ir para pagina inicial"
-            onPress={() => navigation.navigate('loginRestaurante')}/>
 
       </View>
     )

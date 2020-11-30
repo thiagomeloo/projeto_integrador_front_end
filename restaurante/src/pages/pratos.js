@@ -9,12 +9,12 @@ import {
 import styleGlobal from '../styles/styleGlobal'
 
 
-export default function RestauranteScreen({ navigation }) {
+export default function PratosScreen({ navigation }) {
     return (
       <View style={styleGlobal.container}>
 
         <Text style={styleGlobal.textExemplo}> 
-          Pagina opções
+          Pagina pratos
         </Text>
         <View style={styleGlobal.view}>
           <TouchableOpacity
