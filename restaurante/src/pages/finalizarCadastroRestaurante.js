@@ -95,7 +95,7 @@ export default function inicialScreen({ navigation }) {
               />
       
        
-        <View zIndex={1}>
+        <View zIndex={-1}>
           <TouchableOpacity
           style={styleCadastro.Btn}
           onPress={() => navigation.navigate('main')}
