@@ -26,7 +26,7 @@ export default function inicialScreen({ navigation }) {
        <Text style={[stylePerfil.txtIcon,styleGlobal.txtIcon]}>PERFIL</Text>
        
        
-         <ItemEdit/> 
+         <ItemEdit zIndex={-1} nav={()=> navigation.navigate('editPerfil')}/> 
       
         
         <View style={stylePerfil.ViwInput}>

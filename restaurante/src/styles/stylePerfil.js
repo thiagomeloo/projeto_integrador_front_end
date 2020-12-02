@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         fontSize:16,
         paddingLeft:10
     },
+   
     icon2
     :{
         right:53
