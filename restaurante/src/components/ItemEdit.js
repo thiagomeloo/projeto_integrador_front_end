@@ -16,8 +16,8 @@ function ItemEdit(props) {
 
         <View style={stylePerfil.itemEdit}>
             <View style={{ flexDirection: 'row-reverse' }}>
-                <TouchableOpacity onPress={props.nav}>
-                    <MaterialIcons name="edit" size={35} color={colors.primary} />
+                <TouchableOpacity onPress={props.nav} zIndex={-1}>
+                    <MaterialIcons name="edit" size={45} color={colors.primary} />
                 </TouchableOpacity>
             </View>
         </View>
