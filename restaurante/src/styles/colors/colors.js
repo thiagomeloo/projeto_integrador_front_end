@@ -4,7 +4,7 @@ const colors = {
   secondary:'#9D9999',
   colorText:'#808080',
   backgroundView:'#fff',
-  backgroundItemList:'#EDEDED',
+  backgroundItemList:'#FFF',
   backgroundInput: '#F5F5F5',
     
   }

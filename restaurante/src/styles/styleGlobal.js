@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     },
     view:
     {
-        bottom:40
-
+       backgroundColor:colors.backgroundView,
+        paddingTop:25,
     },
     txt:
     {

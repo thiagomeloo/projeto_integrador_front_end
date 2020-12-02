@@ -29,11 +29,27 @@ const styles = StyleSheet.create({
         width:'85%',
     },
     descricao:{
-        fontSize:16,
-        marginBottom:4,
+        fontSize:14,
+        marginBottom:5,
+        fontWeight:'bold',
+        textTransform:'uppercase',
+        color:colors.secondary,
     },
-    textStart:{
-        flexDirection:'row'
+    categoria:{
+        marginTop:5,
+        fontWeight:'bold',
+        textTransform:'uppercase',
+        color:colors.secondary,
+    },
+    qtdPessoas:{
+        marginTop:3,
+        fontWeight:'bold',
+        textTransform:'uppercase',
+        color:colors.secondary,
+    },
+    start:{
+        flexDirection:'row',
+        marginTop:10,
     },
     rodape:{
         flexDirection:'row',

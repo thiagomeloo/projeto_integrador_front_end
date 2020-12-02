@@ -11,7 +11,7 @@ function ItemListPratos(props) {
 
     let star = []
 
-    for (let i = 0; i < props.star; i++) {
+    for (let i = 0; i < props.star && props.star <=5 ; i++) {
         star.push(
             <MaterialIcons name="star" size={16} color={colors.primary} />
         )
@@ -23,11 +23,11 @@ function ItemListPratos(props) {
         <View style={style.container}>
             <View style={{ flexDirection: 'row-reverse' }}>
                 <TouchableOpacity onPress={props.funDelete}>
-                    <MaterialIcons name="delete" size={35} color="black" />
+                    <MaterialIcons name="delete" size={35} color={colors.primary} />
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={props.funEdit}>
-                    <MaterialIcons name="edit" size={35} color="black" />
+                    <MaterialIcons name="edit" size={35} color={colors.primary} />
                 </TouchableOpacity>
 
             </View>
@@ -36,11 +36,11 @@ function ItemListPratos(props) {
             <Text
                 style={style.descricao}>{props.descricao}
             </Text>
-            <Text>Categoria: {props.categoria}</Text>
-            <Text>Serve até: {props.quantidade} pessoas</Text>
-            <Text>{star}</Text>
+            <Text style={style.categoria}>Categoria: {props.categoria}</Text>
+            <Text style={style.qtdPessoas}>Serve até: {props.quantidade} pessoa(s)</Text>
+            <Text style={style.start}>{star}</Text>
             <View style={style.rodape}>
-                <MaterialIcons name="room-service" size={50} color="black" />
+                <MaterialIcons name="room-service" size={50} color={colors.primary} />
             </View>
         </View>
     )
