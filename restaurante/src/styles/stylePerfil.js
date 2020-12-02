@@ -79,6 +79,12 @@ const styles = StyleSheet.create({
         borderWidth:2,
        
     },
+    itemEdit
+    :{
+        left:135,
+        top:11
+        
+    }
 });
 
 export default styles

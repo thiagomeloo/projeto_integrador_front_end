@@ -11,6 +11,7 @@ import {
 import styleGlobal from '../styles/styleGlobal'
 import stylePerfil from '../styles/stylePerfil'
 import DropDownPicker from 'react-native-dropdown-picker'
+import ItemEdit from '../components/ItemEdit'
 
 
 
@@ -25,7 +26,7 @@ export default function inicialScreen({ navigation }) {
         source={require('../../assets/icon2.png')}
         />
        <Text style={[stylePerfil.txtIcon,styleGlobal.txtIcon]}>PERFIL</Text>
-        
+        <ItemEdit/>
         <View style={stylePerfil.ViwInput}>
             <Text style={stylePerfil.txt}>NOME COMPLETO:</Text>
             <TextInput style={stylePerfil.imput}
