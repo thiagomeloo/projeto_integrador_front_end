@@ -34,7 +34,7 @@ export default function RestauranteScreen({ navigation }) {
     <View>
 
         <Image
-        style={[styleGlobal.icon2,{left:50}]}
+        style={[styleGlobal.icon2,{left:50,top:35}]}
         source={require('../../assets/icon2.png')}
         />
        <Text style={[styleGlobal.txtIcon,{left:100}]}>RESTAURANTES</Text>

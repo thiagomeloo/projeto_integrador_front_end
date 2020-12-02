@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
     icon2
     :{
-        top:35,
+        bottom:10,
         width:38,
         height:38
     },

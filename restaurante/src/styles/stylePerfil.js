@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     ViwInput
     :{
         width:310,
-        bottom:10
+        bottom:30
     },
     imput
     :{
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     itemEdit
     :{
         left:135,
-        top:11
+        bottom:10
         
     }
 });
