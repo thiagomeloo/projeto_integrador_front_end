@@ -40,7 +40,7 @@ export default function PratosScreen({ navigation }) {
     <View style={styleGlobal.view}>
 
       <PageName
-        name='Pagina'
+        name='CARDÁPIO'
       />
 
     
