@@ -35,16 +35,12 @@ export default function inicialScreen({ navigation }) {
             <TextInput style={stylePerfil.imput}
             />
 
-            <Text style={stylePerfil.txt}>FANTASIA:</Text>
-            <TextInput style={stylePerfil.imput}
-            />
-
             <Text style={stylePerfil.txt}>E-MAIL:</Text>
             <TextInput style={stylePerfil.imput}
             
             />
 
-            <Text style={stylePerfil.txt}>CNPJ:</Text>
+            <Text style={stylePerfil.txt}>CPF:</Text>
             <TextInput style={stylePerfil.imput}
             
             />
