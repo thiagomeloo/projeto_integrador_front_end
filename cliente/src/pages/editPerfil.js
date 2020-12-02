@@ -23,7 +23,7 @@ export default function inicialScreen({ navigation }) {
       <View style={styleGlobal.container}>
         <Image
         style={[styleGlobal.icon2,styleEditPerfil.icon2]}
-        source={require('../../assets/icon2.png')}
+        source={require('../../assets/icon2.png')} 
         />
        <Text style={[styleEditPerfil.txtIcon,styleGlobal.txtIcon]}>EDITAR PERFIL</Text>
        
