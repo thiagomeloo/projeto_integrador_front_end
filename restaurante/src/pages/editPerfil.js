@@ -9,7 +9,7 @@ import {
 
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
-import stylePerfil from '../styles/stylePerfil'
+import styleEditPerfil from '../styles/styleEditPerfil'
 import DropDownPicker from 'react-native-dropdown-picker'
 
 
@@ -22,16 +22,16 @@ export default function inicialScreen({ navigation }) {
     return (
       <View style={styleGlobal.container}>
         <Image
-        style={[styleGlobal.icon2,stylePerfil.icon2]}
+        style={[styleGlobal.icon2,styleEditPerfil.icon2]}
         source={require('../../assets/icon2.png')}
         />
        <Text style={[styleEditPerfil.txtIcon,styleGlobal.txtIcon]}>EDITAR PERFIL</Text>
        
         
         
-        <View style={stylePerfil.ViwInput}>
+        <View style={styleEditPerfil.ViwInput}>
             <Text style={styleEditPerfil.txt}>NOME COMPLETO:</Text>
-            <TextInput style={stylePerfil.imput}
+            <TextInput style={styleEditPerfil.imput}
             />
 
             <Text style={styleEditPerfil.txt}>FANTASIA:</Text>
@@ -95,7 +95,15 @@ export default function inicialScreen({ navigation }) {
               onChangeItem={item => setValorRegiao(item.value)}
               zIndex={2}
               />
-      
+           
+            <TouchableOpacity
+            zIndex={-1}
+            style={styleEditPerfil.Btn}
+            onPress={() => navigation.navigate('main')}
+            >
+            <Text style={styleGlobal.button}>FINALIZAR</Text>
+            </TouchableOpacity> 
+          
       </View>
     </View>
     )

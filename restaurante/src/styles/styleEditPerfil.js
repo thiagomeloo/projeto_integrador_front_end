@@ -17,9 +17,21 @@ const styles = StyleSheet.create({
         fontSize:16,
         paddingLeft:10
     },
+    Btn
+    :{
+        top:50,
+        backgroundColor: colors.primary,
+        color:colors.backgroundView,
+        borderRadius: 16,
+        paddingLeft: 20,
+        paddingRight:20,
+        textAlign: 'center',
+        fontSize: 18,
+        margin:10
+    },
     icon2
     :{
-        right:53
+        right:90
     },
     txtIcon:
     {
@@ -35,16 +47,8 @@ const styles = StyleSheet.create({
         height: 40,
         borderColor: colors.primary,
         color:colors.colorText,
-        borderBottomWidth:2,
-        borderRadius:3,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.18,
-        shadowRadius: 1.00,
-        elevation: 1.5,
+        borderWidth:2,
+        borderRadius:5,
         marginBottom: 5,
         paddingLeft:10,
         textAlign: 'left'
