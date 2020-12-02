@@ -37,6 +37,18 @@ const styles = StyleSheet.create({
         width:140,
         height:140 
     },
+    icon2
+    :{
+        top:35,
+        width:38,
+        height:38
+    },
+    txtIcon:
+    {
+        color: colors.primary,
+        fontSize:20,
+        fontWeight: 'bold',
+    },
 
 })
 

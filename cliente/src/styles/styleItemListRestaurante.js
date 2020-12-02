@@ -14,7 +14,9 @@ const styles = StyleSheet.create({
         borderRadius:15,
         borderStyle:'solid',
         borderWidth:2,
-        borderColor:colors.primary
+        borderColor:colors.primary,
+        top: 10
+
     },
     nome:{
         fontSize:18,

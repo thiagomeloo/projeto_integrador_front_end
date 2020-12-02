@@ -26,7 +26,7 @@ export default function inicialScreen({ navigation }) {
         style={styleCadastro.icon}
         source={require('../../assets/icon.png')}
         />
-       <Text style={styleCadastro.txtIcon}>FINALIZAR CADASTRO</Text>
+       <Text style={[styleCadastro.txtIcon,{bottom:20}]}>FINALIZAR CADASTRO</Text>
         
         <View style={styleCadastro.ViwInput}>
             <Text style={styleCadastro.txt}>NOME COMPLETO:</Text>

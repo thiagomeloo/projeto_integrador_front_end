@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import {
   View,
   Text,
-  FlatList
+  FlatList,
+  Image
 } from 'react-native'
 
 //STYLES
@@ -32,9 +33,11 @@ export default function RestauranteScreen({ navigation }) {
   return (
     <View>
 
-      <Text style={styleGlobal.textExemplo}>
-        Pagina restaurante
-        </Text>
+        <Image
+        style={[styleGlobal.icon2,{left:50}]}
+        source={require('../../assets/icon2.png')}
+        />
+       <Text style={[styleGlobal.txtIcon,{left:100}]}>RESTAURANTES</Text>
 
       <FlatList
         style={styleGlobal.list}

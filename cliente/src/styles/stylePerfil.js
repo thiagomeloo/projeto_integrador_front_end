@@ -11,35 +11,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor:colors.backgroundView,
     },
-    txtIcon:
-    {
-        color: colors.primary,
-        fontSize:20,
-        fontWeight: 'bold',
-    },
     txt:
     {
         color: colors.primary,
         fontSize:16,
-        paddingLeft:10
+        paddingLeft:10,
+        marginBottom:3
     },
-    icon
+    icon2
     :{
-        bottom:25,
-        width:80,
-        height:80
-    },
-    Btn
-    :{
-        top:30,
-        backgroundColor: colors.primary,
-        color:colors.backgroundView,
-        borderRadius: 16,
-        paddingLeft: 20,
-        paddingRight:20,
-        textAlign: 'center',
-        fontSize: 18,
-        margin:10
+        right:53
     },
     ViwInput
     :{
@@ -50,10 +31,17 @@ const styles = StyleSheet.create({
     :{
         height: 40,
         borderColor: colors.primary,
-        color:colors.primary,
-        backgroundColor: colors.backgroundInput,
-        borderRadius:5,
-        borderWidth: 2,
+        color:colors.colorText,
+        borderBottomWidth:2,
+        borderRadius:3,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.18,
+        shadowRadius: 1.00,
+        elevation: 1.5,
         marginBottom: 5,
         paddingLeft:10,
         textAlign: 'left'
@@ -88,6 +76,12 @@ const styles = StyleSheet.create({
         borderWidth:2,
        
     },
+    itemEdit
+    :{
+        left:135,
+        top:11
+        
+    }
 });
 
 export default styles
