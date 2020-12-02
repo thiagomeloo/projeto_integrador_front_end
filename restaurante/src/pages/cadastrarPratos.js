@@ -23,17 +23,17 @@ export default function inicialScreen({ navigation }) {
     return (
       <View style={styleGlobal.container}>
         <Image
-        style={styleCadastro.icon}
-        source={require('../../assets/icon.png')}
+        style={[styleCadastro.icon2,styleGlobal.icon2]}
+        source={require('../../assets/icon2.png')}
         />
-       <Text style={styleCadastro.txtIcon}>CADASTRO DE PRATOS</Text>
+       <Text style={[styleGlobal.txtIcon,styleCadastro.txtIcon]}>CADASTRO DE PRATOS</Text>
         
         <View style={styleCadastro.ViwInput}>
             <Text style={styleCadastro.txt}>NOME:</Text>
             <TextInput style={styleCadastro.imput}
             />
 
-            <Text style={styleCadastro.txt}>CATEORIA:</Text>
+            <Text style={styleCadastro.txt}>CATEGORIA:</Text>
             <DropDownPicker
               items={[
               { label: 'SELECIONE...',color:'red', value: 'selecione', hidden: true },
@@ -51,7 +51,7 @@ export default function inicialScreen({ navigation }) {
               onChangeItem={item => setValor(item.value)}
               zIndex={2}
               />
-        <Text style={styleCadastro.txt}>SERTE ATÉ:</Text>
+        <Text style={styleCadastro.txt}>SERVE ATÉ:</Text>
             <TextInput style={styleCadastro.imput}
             
             />

@@ -11,24 +11,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor:colors.backgroundView,
     },
-    txtIcon:
-    {
-        color: colors.primary,
-        fontSize:16,
-        bottom: 58
-    },
     txt:
     {
         color: colors.primary,
         fontSize:16,
         paddingLeft:10
     },
-    icon
+    icon2
     :{
-        right:45,
-        bottom:30,
-        width:30,
-        height:30
+        right:53
+    },
+    txtIcon:
+    {
+        bottom: 45
     },
     ViwInput
     :{

@@ -39,7 +39,19 @@ const styles = StyleSheet.create({
         bottom:50,
         width:140,
         height:140 
-    }
+    },
+    icon2
+    :{
+        bottom:10,
+        width:38,
+        height:38
+    },
+    txtIcon:
+    {
+        color: colors.primary,
+        fontSize:20,
+        fontWeight: 'bold',
+    },
 
 });
 

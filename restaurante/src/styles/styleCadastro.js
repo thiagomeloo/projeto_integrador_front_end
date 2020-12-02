@@ -13,9 +13,7 @@ const styles = StyleSheet.create({
     },
     txtIcon:
     {
-        color: colors.primary,
-        fontSize:16,
-        bottom: 20
+        bottom: 45
     },
     txt:
     {
@@ -25,9 +23,13 @@ const styles = StyleSheet.create({
     },
     icon
     :{
-        bottom:25,
+        bottom:12,
         width:80,
         height:80
+    },
+    icon2
+    :{
+        right:130,
     },
     Btn
     :{
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
     ViwInput
     :{
         width:310,
-        bottom:10
+        bottom:1
     },
     imput
     :{

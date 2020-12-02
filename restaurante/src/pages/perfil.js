@@ -21,10 +21,10 @@ export default function inicialScreen({ navigation }) {
     return (
       <View style={styleGlobal.container}>
         <Image
-        style={stylePerfil.icon}
+        style={[styleGlobal.icon2,stylePerfil.icon2]}
         source={require('../../assets/icon2.png')}
         />
-       <Text style={stylePerfil.txtIcon}>PERFIL</Text>
+       <Text style={[stylePerfil.txtIcon,styleGlobal.txtIcon]}>PERFIL</Text>
         
         <View style={stylePerfil.ViwInput}>
             <Text style={stylePerfil.txt}>NOME COMPLETO:</Text>
