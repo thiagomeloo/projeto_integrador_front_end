@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
     {
         color: colors.primary,
         fontSize:16,
-        paddingLeft:10,
-        marginBottom:3
+        paddingLeft:10
     },
+   
     icon2
     :{
         right:53
@@ -33,52 +33,21 @@ const styles = StyleSheet.create({
     },
     imput
     :{
-        height: 40,
+        height: 25,
         borderColor: colors.primary,
         color:colors.colorText,
         borderBottomWidth:2,
-        borderRadius:3,
-        shadowColor: "#000",
+        marginBottom: 20,
+        shadowColor: "red",
         shadowOffset: {
             width: 0,
             height: 1,
         },
         shadowOpacity: 0.18,
         shadowRadius: 1.00,
-        elevation: 1.5,
-        marginBottom: 5,
+        fontSize:15,
         paddingLeft:10,
         textAlign: 'left'
-    },
-    dropdown
-    :{
-        backgroundColor:colors.backgroundInput,
-        borderWidth:2,
-        borderColor:colors.primary,
-        borderRadius:14
-       
-    },
-    dropdown_label
-    :{
-       color:colors.primary
-    },
-    dropdown_Container
-    :{
-        height:40,
-        marginBottom:3
-    },
-    dropdown_item
-    :{
-        justifyContent: 'flex-start',
-        backgroundColor:colors.backgroundInput,
-        marginBottom:15
-    },
-    dropdown_style
-    :{
-        backgroundColor:colors.backgroundInput,
-        borderColor:colors.primary,
-        borderWidth:2,
-       
     },
     itemEdit
     :{
