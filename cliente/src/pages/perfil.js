@@ -11,6 +11,8 @@ import styleGlobal from '../styles/styleGlobal'
 import stylePerfil from '../styles/stylePerfil'
 import ItemEdit from '../components/ItemEdit'
 
+//COMPONENTES
+import PageName from '../components/PageName'
 
 
 
@@ -19,13 +21,9 @@ export default function inicialScreen({ navigation }) {
    
     return (
       <View style={styleGlobal.container}>
-        <Image
-        style={[styleGlobal.icon2,stylePerfil.icon2]}
-        source={require('../../assets/icon2.png')}
-        />
-       <Text style={[stylePerfil.txtIcon,styleGlobal.txtIcon]}>PERFIL</Text>
-       
-       
+
+        <PageName name='PERFIL'/>
+
          <ItemEdit zIndex={-1} nav={()=> navigation.navigate('editPerfil')}/> 
       
         
