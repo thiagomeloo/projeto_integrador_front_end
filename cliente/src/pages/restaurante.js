@@ -8,9 +8,12 @@ import {
 
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
+import styleRestaurante from '../styles/styleRestaurante'
+
 
 //COMPONENTES
 import ItemListRestaurante from '../components/ItemListRestaurante'
+import PageName from '../components/PageName'
 
 export default function RestauranteScreen({ navigation }) {
 
@@ -31,13 +34,9 @@ export default function RestauranteScreen({ navigation }) {
   }
 
   return (
-    <View>
+    <View style={styleRestaurante.container}>
 
-        <Image
-        style={[styleGlobal.icon2,{left:50,top:35}]}
-        source={require('../../assets/icon2.png')}
-        />
-       <Text style={[styleGlobal.txtIcon,{left:100}]}>RESTAURANTES</Text>
+      <PageName name='RESTAURANTES'/>
 
       <FlatList
         style={styleGlobal.list}
