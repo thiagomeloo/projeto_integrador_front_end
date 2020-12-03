@@ -66,7 +66,7 @@ export default function PratosScreen({ navigation }) {
 
       <View style={styleGlobal.view}>
         <TouchableOpacity
-          style={[styleGlobal.button, { top: 40 }]}
+          style={[styleGlobal.button, {marginBottom:55}]}
           onPress={() => navigation.navigate('cadastrarPratos')}
         >
           <Text style={styleGlobal.button}>CADASTRAR PRATOS</Text>
