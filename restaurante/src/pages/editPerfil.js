@@ -101,7 +101,7 @@ export default function inicialScreen({ navigation }) {
             style={styleEditPerfil.Btn}
             onPress={() => navigation.navigate('main')}
             >
-            <Text style={styleGlobal.button}>FINALIZAR</Text>
+            <Text style={styleGlobal.button}>ATUALIZAR</Text>
             </TouchableOpacity> 
           
       </View>
