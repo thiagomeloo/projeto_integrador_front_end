@@ -30,8 +30,6 @@ export default function loginScreen({ navigation }) {
           </TouchableOpacity> 
         </View>
         
-        <Text style={styleGlobal.txt}>CADASTRE-SE</Text>
-        
       </View>
     )
 }
