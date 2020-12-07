@@ -26,7 +26,7 @@ function ItemListPratos(props) {
                     <MaterialIcons name="delete" size={35} color={colors.primary} />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={props.funEdit}>
+                <TouchableOpacity onPress={props.nav}>
                     <MaterialIcons name="edit" size={35} color={colors.primary} />
                 </TouchableOpacity>
 

@@ -9,6 +9,7 @@ import loginRestaurantePage from './src/pages/loginRestaurante'
 import finalizarCadastroRestaurante from './src/pages/finalizarCadastroRestaurante'
 import cadastrarPratos from './src/pages/cadastrarPratos'
 import editPerfil from './src/pages/editPerfil'
+import editPratos from './src/pages/editPratos'
 
 
 //NAVIGATIONS
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name="finalizarCadastroRestaurante"  component={finalizarCadastroRestaurante} />
         <Stack.Screen name="cadastrarPratos"  component={cadastrarPratos} />
         <Stack.Screen name="editPerfil"  component={editPerfil} />
+        <Stack.Screen name="editPratos"  component={editPratos} />
       </Stack.Navigator>
     </NavigationContainer>
   )
