@@ -22,11 +22,11 @@ function ItemListPratos(props) {
 
         <View style={style.container}>
             <View style={{ flexDirection: 'row-reverse' }}>
-                <TouchableOpacity onPress={props.funDelete}>
+                <TouchableOpacity zIndex={-1} onPress={props.funDelete}>
                     <MaterialIcons name="delete" size={35} color={colors.primary} />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={props.nav}>
+                <TouchableOpacity zIndex={-1} onPress={props.funcEdit}>
                     <MaterialIcons name="edit" size={35} color={colors.primary} />
                 </TouchableOpacity>
 

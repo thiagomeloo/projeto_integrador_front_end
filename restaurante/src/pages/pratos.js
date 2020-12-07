@@ -57,7 +57,7 @@ export default function PratosScreen({ navigation }) {
             categoria={item.categoria}
             quantidade={item.quantidade}
             star={item.star}
-            nav={()=> navigation.navigate('editPratos')}
+            funcEdit={()=> navigation.navigate('editPratos',{item})}
             funcRemove={() => removePrato(item)}
           >
           </ItemListPratos>

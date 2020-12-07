@@ -17,9 +17,11 @@ import Textarea from 'react-native-textarea'
 
 
 
-export default function inicialScreen({ navigation }) {
+export default function inicialScreen({ route,navigation }) {
     
+    const item = route.params.item
     const [valor, setValor] = useState('selecione') 
+    
     return (
       <View style={styleGlobal.container}>
         <Image
@@ -29,7 +31,7 @@ export default function inicialScreen({ navigation }) {
        <Text style={[styleGlobal.txtIcon,styleCadastro.txtIcon]}>EDITAR PRATOS</Text>
         
         <View style={styleCadastro.ViwInput}>
-            <Text style={styleCadastro.txt}>NOME:</Text>
+    <Text style={styleCadastro.txt}>NOME:</Text>
             <TextInput style={styleCadastro.imput}
             />
 
