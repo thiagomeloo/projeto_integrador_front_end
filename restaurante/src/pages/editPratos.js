@@ -25,7 +25,7 @@ export default function inicialScreen({ route,navigation }) {
     return (
       <View style={styleGlobal.container}>
         <Image
-        style={[styleCadastro.icon2,styleGlobal.icon2]}
+        style={[styleCadastro.icon2,styleGlobal.icon2,{right:95}]}
         source={require('../../assets/icon2.png')}
         />
        <Text style={[styleGlobal.txtIcon,styleCadastro.txtIcon]}>EDITAR PRATOS</Text>
