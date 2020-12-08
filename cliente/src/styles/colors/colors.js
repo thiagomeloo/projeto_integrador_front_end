@@ -5,6 +5,7 @@ const colors = {
   backgroundView:'#fff',
   backgroundItemList:'#fff',
   backgroundInput: '#F5F5F5',
+  fontColorPrimary:'#fff',
     
   }
   
