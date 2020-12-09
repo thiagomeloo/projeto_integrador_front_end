@@ -1,16 +1,16 @@
 import { StyleSheet} from 'react-native'
+import PageName from '../components/PageName'
 
 
 import colors from './colors/colors'
 
 const styles = StyleSheet.create({
-
-    container:{
-        paddingTop:30
+    container
+    :{
+        backgroundColor:colors.backgroundView
     },
-
-    pageName:{
-        backgroundColor:'red',
+    PageName:{
+        marginBottom:30
     }
 
 })
