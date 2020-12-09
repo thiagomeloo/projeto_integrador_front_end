@@ -9,7 +9,6 @@ box:{
     borderWidth:2,
     borderRadius:15,
     marginBottom:10,
-    elevation:5,
     padding:10,
     alignItems:'center'
 },
