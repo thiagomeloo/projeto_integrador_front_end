@@ -21,7 +21,14 @@ export default function PratosScreen({ navigation }) {
       />
 
     
-
+      <View style={styleGlobal.view}>
+        <TouchableOpacity
+          style={[styleGlobal.button]}
+          onPress={() => navigation.navigate('editMesas')}
+        >
+          <Text style={styleGlobal.button}>EDITAR MESAS</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styleGlobal.view}>
         <TouchableOpacity
           style={[styleGlobal.button]}
