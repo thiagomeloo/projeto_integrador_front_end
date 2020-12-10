@@ -3,6 +3,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  FlatList
 } from 'react-native'
 
 //STYLES
@@ -10,8 +11,17 @@ import styleGlobal from '../styles/styleGlobal'
 
 //COMPONENTES
 import PageName from '../components/PageName'
+import ItemListMesas from '../components/ItemListMesas'
 
 export default function PratosScreen({ navigation }) {
+
+  const [listaMesas, setListaMesas] = useState(
+    {'mesas':[
+      { "id": 1, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 1"}, "reserva_mesa":{"id":1}, "reserva_restaurante":{"id":1} },
+      { "id": 3, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 3"}, "reserva_mesa":{"id":2}, "reserva_restaurante":{"id":2} },
+      { "id": 2, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 2"}, "reserva_mesa":{"id":3}, "reserva_restaurante":{"id":3} },
+    ]}
+  )
 
   return (
     <View style={styleGlobal.view}>
@@ -20,15 +30,15 @@ export default function PratosScreen({ navigation }) {
         name='MESAS'
       />
 
-    
-      <View style={styleGlobal.view}>
-        <TouchableOpacity
-          style={[styleGlobal.button]}
-          onPress={() => navigation.navigate('editMesas')}
-        >
-          <Text style={styleGlobal.button}>EDITAR MESAS</Text>
-        </TouchableOpacity>
-      </View>
+      <FlatList
+        style={styleGlobal.list}
+        data={listaMesas.mesas}
+        keyExtractor={item => item.id.toString()}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) =>
+          <ItemListMesas/>
+        }
+      />
       <View style={styleGlobal.view}>
         <TouchableOpacity
           style={[styleGlobal.button]}
@@ -37,7 +47,6 @@ export default function PratosScreen({ navigation }) {
           <Text style={styleGlobal.button}>CADASTRAR MESAS</Text>
         </TouchableOpacity>
       </View>
-
     </View>
   )
 }
