@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
         marginHorizontal:10
     },
     iconDelete:{
-        marginLeft:'65%',
+        paddingHorizontal:5,
     },
 
 })

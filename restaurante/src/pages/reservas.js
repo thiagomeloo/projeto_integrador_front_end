@@ -29,7 +29,7 @@ export default function ReservasScreen({ navigation }) {
       <PageName name='Lista de Reservas' />
 
       <FlatList
-        style={styleGlobal.list}
+        style={[styleGlobal.list,styleReservas.list]}
         data={listaReservas.reservas}
         keyExtractor={item => item.id.toString()}
         showsVerticalScrollIndicator={false}

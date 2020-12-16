@@ -43,10 +43,10 @@ export default function PratosScreen({ navigation }) {
         name='CARDÁPIO'
       />
 
-    
+
 
       <FlatList
-        style={styleListPratos.list}
+        style={styleGlobal.list}
         data={listaPratos.pratos}
         keyExtractor={item => item.id.toString()}
         showsVerticalScrollIndicator={false}
@@ -57,22 +57,17 @@ export default function PratosScreen({ navigation }) {
             categoria={item.categoria}
             quantidade={item.quantidade}
             star={item.star}
-            funcEdit={()=> navigation.navigate('editPratos',{item})}
+            funcEdit={() => navigation.navigate('editPratos', { item })}
             funcRemove={() => removePrato(item)}
           >
           </ItemListPratos>
         }
       />
-
-      <View style={styleGlobal.view}>
-        <TouchableOpacity
-          style={[styleGlobal.button, {marginBottom:55}]}
-          onPress={() => navigation.navigate('cadastrarPratos')}
-        >
-          <Text style={styleGlobal.button}>CADASTRAR PRATOS</Text>
-        </TouchableOpacity>
-      </View>
-
+      <TouchableOpacity
+        style={[styleGlobal.button]}
+        onPress={() => navigation.navigate('cadastrarPratos')}>
+        <Text style={styleGlobal.button}>CADASTRAR PRATOS</Text>
+      </TouchableOpacity>
     </View>
   )
 }

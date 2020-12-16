@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     {
        backgroundColor:colors.backgroundView,
         paddingTop:25,
+        height:'100%',
     },
     txt:
     {
@@ -52,6 +53,9 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight: 'bold',
     },
+    list:{
+        height:'70%',
+    }
 
 });
 

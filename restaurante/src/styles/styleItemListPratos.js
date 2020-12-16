@@ -16,10 +16,6 @@ const styles = StyleSheet.create({
         borderWidth:2,
         borderColor:colors.primary
     },
-    list:{
-        height:'70%',
-    
-    },
     nome:{
         fontSize:18,
         fontWeight:'bold',
