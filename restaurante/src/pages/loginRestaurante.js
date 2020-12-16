@@ -11,6 +11,9 @@ import {
 import styleGlobal from '../styles/styleGlobal'
 
 
+import authGoogle from '../services/authGoogleService'
+
+
 export default function loginScreen({ navigation }) {
   return (
     <View style={styleGlobal.container}>
@@ -22,7 +25,7 @@ export default function loginScreen({ navigation }) {
 
         <TouchableOpacity
           style={styleGlobal.button}
-          onPress={() => navigation.navigate('finalizarCadastroRestaurante')}
+          onPress={() => authGoogle.auth(navigation) }
         >
           <Text style={styleGlobal.button}>LOGIN COM GOOGLE</Text>
         </TouchableOpacity>
