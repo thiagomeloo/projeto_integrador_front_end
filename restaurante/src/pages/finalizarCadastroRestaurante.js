@@ -13,11 +13,27 @@ import styleCadastro from '../styles/styleCadastro'
 import DropDownPicker from 'react-native-dropdown-picker'
 
 
+import RestauranteModel from '../model/restauranteModel'
 
-
-export default function inicialScreen({ navigation }) {
-    
+export default function inicialScreen({route, navigation }) {
+  
+    const user = route.params.user
+    const [nomeCompleto, setNomeCompleto] = useState(user.name)
+    const [fantasia, setFantasia] = useState('')
+    const [email, setEmail] = useState(user.email)
+    const [cnpj, setCnpj] = useState('')
+    const [telefone, setTelefone] = useState('')
     const [valorRegiao, setValorRegiao] = useState('selecione') //constante para o piker de região
+    
+    function prosseguir(){
+      let restaurante = new RestauranteModel(nomeCompleto,
+        email,cnpj,telefone,fantasia,
+        valorRegiao,'',)
+        
+        //navigation.navigate('main', { restaurante })
+        
+    }
+
     return (
       <View style={styleGlobal.container}>
         <Image
@@ -29,26 +45,28 @@ export default function inicialScreen({ navigation }) {
         <View style={styleCadastro.ViwInput}>
             <Text style={styleCadastro.txt}>NOME COMPLETO:</Text>
             <TextInput style={styleCadastro.imput}
+              value={nomeCompleto}
             />
 
             <Text style={styleCadastro.txt}>FANTASIA:</Text>
             <TextInput style={styleCadastro.imput}
-            
+              value={fantasia}
             />
 
             <Text style={styleCadastro.txt}>E-MAIL:</Text>
             <TextInput style={styleCadastro.imput}
-            
+              value={email}
+              editable={false}
             />
 
             <Text style={styleCadastro.txt}>CNPJ:</Text>
             <TextInput style={styleCadastro.imput}
-            
+              value={cnpj}
             />
 
             <Text style={styleCadastro.txt}>TELEFONE:</Text>
             <TextInput style={styleCadastro.imput}
-            
+              value={telefone}
             />
 
             <Text style={styleCadastro.txt}>REGIÃO:</Text>
@@ -98,9 +116,9 @@ export default function inicialScreen({ navigation }) {
         <View zIndex={-1}>
           <TouchableOpacity zIndex={-1}
           style={styleCadastro.Btn}
-          onPress={() => navigation.navigate('main')}
+          onPress={() => prosseguir()}
           >
-          <Text style={styleGlobal.button}>FINALIZAR</Text>
+          <Text style={styleGlobal.button}>PROSSEGUIR</Text>
           </TouchableOpacity> 
         </View>
       
