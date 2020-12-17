@@ -10,6 +10,7 @@ import {
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
 
+import authGoogle from '../services/authGoogleService'
 
 export default function loginScreen({ navigation }) {
     return (
@@ -24,13 +25,11 @@ export default function loginScreen({ navigation }) {
         <View style={styleGlobal.view}>
           <TouchableOpacity
           style={styleGlobal.button}
-          onPress={() => navigation.navigate('finalizarCadastroCliente')}
+          onPress={() => authGoogle.auth(navigation)}
           >
           <Text style={styleGlobal.button}>LOGIN COM GOOGLE</Text>
           </TouchableOpacity> 
         </View>
-        
-        <Text style={styleGlobal.txt}>CADASTRE-SE</Text>
         
       </View>
     )
