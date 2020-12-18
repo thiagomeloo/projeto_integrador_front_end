@@ -30,7 +30,7 @@ export default function inicialScreen({route, navigation }) {
         email,cpf,telefone,valorSexo,
         valorRegiao,'',)
         console.log(cliente)
-        //navigation.navigate('main', { cliente })
+        navigation.navigate('main', { cliente })
         
     }
     
