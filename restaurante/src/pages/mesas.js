@@ -32,14 +32,14 @@ export default function PratosScreen({ navigation }) {
       <PageName
         name='MESAS'
       />
-
+    
       <FlatList
         style={[styleGlobal.list]}
         data={listaMesas.mesas}
         keyExtractor={item => item.id.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) =>
-          <ItemListMesas/>
+          <ItemListMesas funcEdit={() => navigation.navigate('editMesas',{item})}/>
         }
       />
 

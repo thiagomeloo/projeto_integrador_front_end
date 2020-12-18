@@ -27,7 +27,7 @@ function ItemListMesas(props) {
                         <FontAwesome name="user" size={30} color={colors.fontColorPrimary} />
                     </View>
                     <View style={style.buttonsFunc}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={props.funcEdit}>
                             <MaterialIcons style={style.btnFun} name="edit" size={35} color={colors.primary} />
                         </TouchableOpacity>
                         <TouchableOpacity>
