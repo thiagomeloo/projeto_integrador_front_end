@@ -11,15 +11,29 @@ import {
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
 import styleCadastro from '../styles/styleCadastro'
-
-
+//COMPONENTS
 import DropDownPicker from 'react-native-dropdown-picker'
+//MODEL
+import ClienteModel from '../model/clienteModel'
 
-
-export default function inicialScreen({ navigation }) {
-    
-    const [valor, setValor] = useState('selecione')
+export default function inicialScreen({route, navigation }) {
+    const user = route.params.user
+    const [nomeCompleto, setNomeCompleto] = useState(user.name)
+    const [email, setEmail] = useState(user.email)
+    const [cpf, setCpf] = useState('')
+    const [telefone, setTelefone] = useState('')
+    const [valorSexo, setValorSexo] = useState('selecione')
     const [valorRegiao, setValorRegiao] = useState('selecione') //constante para o piker de região
+    
+    function finalizar(){
+      let cliente = new ClienteModel(nomeCompleto,
+        email,cpf,telefone,valorSexo,
+        valorRegiao,'',)
+        console.log(cliente)
+        //navigation.navigate('main', { cliente })
+        
+    }
+    
     return (
       <View style={styleGlobal.container}>
         <Image
@@ -31,21 +45,22 @@ export default function inicialScreen({ navigation }) {
         <View style={styleCadastro.ViwInput}>
             <Text style={styleCadastro.txt}>NOME COMPLETO:</Text>
             <TextInput style={styleCadastro.imput}
+            value={nomeCompleto} onChangeText={TextInput=>setNomeCompleto(TextInput)}
             />
 
             <Text style={styleCadastro.txt}>E-MAIL:</Text>
             <TextInput style={styleCadastro.imput}
-            
+            value={email} editable={false}
             />
 
             <Text style={styleCadastro.txt}>CPF:</Text>
             <TextInput style={styleCadastro.imput}
-            
+            value={cpf} onChangeText={TextInput=>setCpf(TextInput)}
             />
 
             <Text style={styleCadastro.txt}>TELEFONE:</Text>
             <TextInput style={styleCadastro.imput}
-            
+            value={telefone} onChangeText={TextInput=>setTelefone(TextInput)}
             />
             <Text style={styleCadastro.txt}>SEXO:</Text>
             <DropDownPicker
@@ -55,13 +70,13 @@ export default function inicialScreen({ navigation }) {
               { label: 'FEMENINO', value: 'femenino'},
               { label: 'OUTRO', value: 'outro'}
               ]}
-              defaultValue={valor}
+              defaultValue={valorSexo}
               style={styleCadastro.dropdown}
               labelStyle={styleCadastro.dropdown_label}
               containerStyle={styleCadastro.dropdown_Container}        
               itemStyle={styleCadastro.dropdown_item}
               dropDownStyle={styleCadastro.dropdown_style}
-              onChangeItem={item => setValor(item.value)}
+              onChangeItem={item => setValorSexo(item.value)}
               zIndex={2}
               />
              
@@ -115,7 +130,7 @@ export default function inicialScreen({ navigation }) {
         <View zIndex={-1}>
           <TouchableOpacity
           style={styleCadastro.Btn}
-          onPress={() => navigation.navigate('main')}
+          onPress={() => finalizar()}
           >
           <Text style={styleGlobal.button}>FINALIZAR</Text>
           </TouchableOpacity> 
