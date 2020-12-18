@@ -30,7 +30,7 @@ export default function inicialScreen({route, navigation }) {
         email,cnpj,telefone,fantasia,
         valorRegiao,'',)
         
-        //navigation.navigate('main', { restaurante })
+        navigation.navigate('finalizarCadastroDescricao', { restaurante })
         
     }
 
