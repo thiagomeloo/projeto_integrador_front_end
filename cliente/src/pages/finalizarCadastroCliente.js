@@ -15,6 +15,8 @@ import styleCadastro from '../styles/styleCadastro'
 import DropDownPicker from 'react-native-dropdown-picker'
 //MODEL
 import ClienteModel from '../model/clienteModel'
+//SERVICE
+import clienteService from '../services/clienteService'
 
 export default function inicialScreen({route, navigation }) {
     const user = route.params.user
@@ -28,9 +30,10 @@ export default function inicialScreen({route, navigation }) {
     function finalizar(){
       let cliente = new ClienteModel(nomeCompleto,
         email,cpf,telefone,valorSexo,
-        valorRegiao,'',)
-        console.log(cliente)
-        navigation.navigate('main', { cliente })
+        valorRegiao)
+        
+        clienteService.create(cliente)
+        navigation.navigate('main',cliente)
         
     }
     
