@@ -49,6 +49,10 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight: 'bold',
     },
+    list:{
+        height:'100%',
+        paddingBottom:30,
+    },   
 
 })
 

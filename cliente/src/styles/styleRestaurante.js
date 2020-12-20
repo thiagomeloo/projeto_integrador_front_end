@@ -6,8 +6,10 @@ import colors from './colors/colors'
 const styles = StyleSheet.create({
 
     container:{
-        paddingTop:25,
-        backgroundColor:colors.backgroundView
+        paddingVertical:35,
+        backgroundColor:colors.backgroundView,
+        height:'100%',
+        
     },
 
 })

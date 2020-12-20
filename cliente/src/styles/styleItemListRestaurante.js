@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
         borderStyle:'solid',
         borderWidth:2,
         borderColor:colors.primary,
-        top: 10
+        top: 10,
+        marginBottom:10
 
     },
     nome:{
