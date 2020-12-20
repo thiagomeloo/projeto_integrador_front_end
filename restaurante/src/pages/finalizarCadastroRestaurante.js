@@ -11,8 +11,7 @@ import {
 import styleGlobal from '../styles/styleGlobal'
 import styleCadastro from '../styles/styleCadastro'
 import DropDownPicker from 'react-native-dropdown-picker'
-
-
+//MODEL
 import RestauranteModel from '../model/restauranteModel'
 
 export default function inicialScreen({route, navigation }) {
@@ -28,9 +27,9 @@ export default function inicialScreen({route, navigation }) {
     function prosseguir(){
       let restaurante = new RestauranteModel(nomeCompleto,
         email,cnpj,telefone,fantasia,
-        valorRegiao,'',)
+        valorRegiao)
         
-        navigation.navigate('finalizarCadastroDescricao', { restaurante })
+        navigation.navigate('finalizarCadastroDescricao',  restaurante )
         
     }
 
@@ -45,28 +44,28 @@ export default function inicialScreen({route, navigation }) {
         <View style={styleCadastro.ViwInput}>
             <Text style={styleCadastro.txt}>NOME COMPLETO:</Text>
             <TextInput style={styleCadastro.imput}
-              value={nomeCompleto}
+              value={nomeCompleto} onChangeText={TextInput=>setNomeCompleto(TextInput)}
             />
 
             <Text style={styleCadastro.txt}>FANTASIA:</Text>
             <TextInput style={styleCadastro.imput}
-              value={fantasia}
+              value={fantasia} onChangeText={TextInput=>setFantasia(TextInput)}
             />
 
             <Text style={styleCadastro.txt}>E-MAIL:</Text>
             <TextInput style={styleCadastro.imput}
-              value={email}
+              value={email} onChangeText={TextInput=>setEmail(TextInput)}
               editable={false}
             />
 
             <Text style={styleCadastro.txt}>CNPJ:</Text>
             <TextInput style={styleCadastro.imput}
-              value={cnpj}
+              value={cnpj} onChangeText={TextInput=>setCnpj(TextInput)}
             />
 
             <Text style={styleCadastro.txt}>TELEFONE:</Text>
             <TextInput style={styleCadastro.imput}
-              value={telefone}
+              value={telefone} onChangeText={TextInput=>setTelefone(TextInput)}
             />
 
             <Text style={styleCadastro.txt}>REGIÃO:</Text>

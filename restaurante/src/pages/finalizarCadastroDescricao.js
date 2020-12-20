@@ -11,8 +11,20 @@ import styleGlobal from '../styles/styleGlobal'
 import styleCadastro from '../styles/styleCadastro'
 import Textarea from 'react-native-textarea'
 
-export default function inicialScreen({ route, navigation }) {
+//SERVICE
+import restauranteService from '../services/restauranteService'
 
+export default function inicialScreen({ route, navigation }) {
+    
+    const [descricao, setDescricao] = useState('')
+
+    function finalizar(){
+        route.params.restaurante_descricao = descricao 
+        restauranteService.create(route)
+        navigation.navigate('main',route)
+         
+          
+      }
     return (
         <View style={[styleGlobal.container]}>
             <Image
@@ -24,14 +36,15 @@ export default function inicialScreen({ route, navigation }) {
                 <Text style={styleCadastro.txt}>DESCRIÇÃO:</Text>
                 <Textarea
                     containerStyle={styleCadastro.textareaContainer}
-                    style={styleCadastro.textarea}
+                    style={styleCadastro.textarea} value={descricao}
+                     onChangeText={TextInput=>setDescricao(TextInput)}
                 />
             </View>
 
             <View zIndex={1}>
                 <TouchableOpacity
                     style={[styleCadastro.Btn, { marginTop: 130 }]}
-                    onPress={() => navigation.navigate('main')}
+                    onPress={()=>finalizar()}
                 >
                     <Text style={styleGlobal.button}>FINALIZAR</Text>
                 </TouchableOpacity>
