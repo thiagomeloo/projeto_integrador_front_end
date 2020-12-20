@@ -13,14 +13,14 @@ function ItemListRestaurante(props) {
 
     for (let i = 0; i < props.star; i++) {
         star.push(
-            <MaterialIcons name="star" size={16} color={colors.primary} />
+            <MaterialIcons key={i} name="star" size={16} color={colors.primary} />
         )
     }
 
     return (
 
-        <TouchableOpacity 
-        onPress={props.func}>
+        <TouchableOpacity
+            onPress={props.func}>
             <View style={style.container}>
                 <Text style={style.nome}>{props.nome}</Text>
                 <Text

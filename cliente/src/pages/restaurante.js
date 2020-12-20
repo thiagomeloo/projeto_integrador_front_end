@@ -15,42 +15,48 @@ import styleRestaurante from '../styles/styleRestaurante'
 import ItemListRestaurante from '../components/ItemListRestaurante'
 import PageName from '../components/PageName'
 
+//SERVICES
+import restauranteService from '../services/restauranteService'
+
 export default function RestauranteScreen({ navigation }) {
 
-  const [listaRestaurante, setListaRestaurante] = useState(
-    {'restaurantes':[
-      { "id": 1, "nome": "Restaurante1", "descricao": "descricao restaurante", "star": 2 },
-      { "id": 2, "nome": "Restaurante2", "descricao": "descricao restaurante", "star": 3 },
-      { "id": 3, "nome": "Restaurante3", "descricao": "descricao restaurante", "star": 4 },
-      { "id": 4, "nome": "Restaurante1", "descricao": "descricao restaurante", "star": 2 },
-      { "id": 5, "nome": "Restaurante2", "descricao": "descricao restaurante", "star": 3 },
-      { "id": 6, "nome": "Restaurante3", "descricao": "descricao restaurante", "star": 4 },
-      { "id": 7, "nome": "Restaurante3", "descricao": "descricao restaurante", "star": 4 }
-    ]}
-  )
+  const [listaRestaurante, setListaRestaurante] = useState({})
+  const [listaRestauranteUpdate, setListaRestauranteUpdate] = useState(true)
 
-  function openRestaurante(item){
+
+
+  if (listaRestauranteUpdate) {
+    restauranteService.all().then((r) => {
+      setListaRestauranteUpdate(false)
+      return setListaRestaurante(r.restaurantes)
+    })
+  }
+
+
+
+  function openRestaurante(item) {
     console.log(item)
   }
+
 
   return (
     <View style={styleRestaurante.container}>
 
-      <PageName name='RESTAURANTES'/>
+      <PageName name='RESTAURANTES' />
 
       <FlatList
-        style={styleGlobal.list}
-        data={listaRestaurante.restaurantes}
-        keyExtractor={item => item.id.toString()}
+        style={[styleGlobal.list]}
+        data={listaRestaurante}
+        keyExtractor={item => {return item.restaurante_codigo + ''}}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) =>
-          <ItemListRestaurante
-            nome={item.nome}
-            descricao={item.descricao}
-            star={item.star}
-            func= {()=> openRestaurante(item)}
-          >
-          </ItemListRestaurante>
+        <ItemListRestaurante  key={item.restaurante_codigo}
+          nome={item.restaurante_nome}
+          descricao={item.restaurante_descricao}
+          star={3}
+          func={()=>{openRestaurante(item)}}
+        />
+         
         }
       />
 
