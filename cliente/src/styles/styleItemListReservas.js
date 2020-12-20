@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
         borderColor:colors.primary,
         top: 10,
         flexDirection:'row',
+        marginBottom:15,
 
     },
     viewData:{
@@ -112,7 +113,26 @@ const styles = StyleSheet.create({
         marginHorizontal:10
     },
     iconDelete:{
-        marginLeft:'65%',
+        marginLeft:'5%',
+    },
+    qtdMesasDisponiveis:{
+        marginVertical:10,
+        color:colors.secondary,
+        fontSize:18,
+        fontWeight:'bold',
+        textTransform:'uppercase',
+    },
+    btnReservar:{
+        backgroundColor:colors.primary,
+        borderRadius:15,
+        height:'35%',
+        marginHorizontal:'5%',
+        paddingHorizontal:'15%'
+    },
+    txtBtnReservar:{
+        color:colors.fontColorPrimary,
+        paddingVertical:5,
+
     },
 
 })
