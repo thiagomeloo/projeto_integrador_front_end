@@ -34,8 +34,9 @@ export default function RestauranteScreen({ navigation }) {
 
 
 
-  function openRestaurante(item) {
-    console.log(item)
+  function openReservas(restaurante) {
+    //console.log(item)
+    navigation.navigate('escolherMesa',restaurante)
   }
 
 
@@ -54,7 +55,7 @@ export default function RestauranteScreen({ navigation }) {
           nome={item.restaurante_nome}
           descricao={item.restaurante_descricao}
           star={3}
-          func={()=>{openRestaurante(item)}}
+          func={()=>{openReservas(item)}}
         />
          
         }
