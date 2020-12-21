@@ -30,6 +30,13 @@ module.exports = {
             })
 
         
+    },
+
+    async update(restauranteModel){
+        const requisicao = require('./requisicaoService')
+        return await requisicao.post('/restaurante/update'),{
+         //passar os parametros do restaurante   
+        }
     }
 
 }
