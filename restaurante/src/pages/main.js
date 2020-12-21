@@ -20,12 +20,14 @@ import mesasPage from './mesas'
 import colors from '../styles/colors/colors'
 
 
-export default function mainScreen({ navigation }) {
+export default function mainScreen({route, navigation }) {
+  //console.log(route)
+  
   return (
     <Tab.Navigator
       
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ focused, color, size }) => {  
           size = 40
           let iconName
           let typeIcon = 'ionicons'
@@ -61,10 +63,10 @@ export default function mainScreen({ navigation }) {
         showLabel:false,
         
       }}>
-      <Tab.Screen name="mesas" component={mesasPage} />
-      <Tab.Screen name="reserva" component={reservaPage} />
-      <Tab.Screen name="pratos" component={pratosPage} />
-      <Tab.Screen name="perfil" component={perfilPage} />
+      <Tab.Screen name="mesas" component={mesasPage} initialParams={route.params} />
+      <Tab.Screen name="reserva" component={reservaPage} initialParams={route.params} />
+      <Tab.Screen name="pratos" component={pratosPage} initialParams={route.params} />
+      <Tab.Screen name="perfil" component={perfilPage}  initialParams={route.params} />
     </Tab.Navigator>
   )
 }

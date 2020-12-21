@@ -13,8 +13,8 @@ import styleGlobal from '../styles/styleGlobal'
 import PageName from '../components/PageName'
 import ItemListMesas from '../components/ItemListMesas'
 
-export default function PratosScreen({ navigation }) {
 
+export default function MesaScreen({route,navigation }) {
   const [listaMesas, setListaMesas] = useState(
     {'mesas':[
       { "id": 1, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 1"}, "reserva_mesa":{"id":1}, "reserva_restaurante":{"id":1} },
