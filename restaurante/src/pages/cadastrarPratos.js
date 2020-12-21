@@ -13,7 +13,7 @@ import styleCadastro from '../styles/styleCadastro'
 import DropDownPicker from 'react-native-dropdown-picker'
 import Textarea from 'react-native-textarea'
 
-
+import PageName from '../components/PageName'
 
 
 
@@ -22,11 +22,7 @@ export default function inicialScreen({ navigation }) {
     const [valor, setValor] = useState('selecione') 
     return (
       <View style={styleGlobal.container}>
-        <Image
-        style={[styleCadastro.icon2,styleGlobal.icon2]}
-        source={require('../../assets/icon2.png')}
-        />
-       <Text style={[styleGlobal.txtIcon,styleCadastro.txtIcon]}>CADASTRO DE PRATOS</Text>
+        <PageName name='CADASTRAR MESA'/>
         
         <View style={styleCadastro.ViwInput}>
             <Text style={styleCadastro.txt}>NOME:</Text>
@@ -51,7 +47,11 @@ export default function inicialScreen({ navigation }) {
               onChangeItem={item => setValor(item.value)}
               zIndex={2}
               />
-        <Text style={styleCadastro.txt}>SERVE ATÉ:</Text>
+            <Text style={styleCadastro.txt}>SERVE ATÉ:</Text>
+            <TextInput style={styleCadastro.imput}
+            
+            />
+            <Text style={styleCadastro.txt}>PREÇO:</Text>
             <TextInput style={styleCadastro.imput}
             
             />
@@ -66,10 +66,10 @@ export default function inicialScreen({ navigation }) {
         <View zIndex={1}>
           <TouchableOpacity
           zIndex={1}
-          style={styleCadastro.Btn}
+          style={[styleCadastro.Btn,{marginBottom:30}]}
           onPress={() => navigation.navigate('main')}
           >
-          <Text style={styleGlobal.button}>CADASTRAR</Text>
+          <Text style={[styleGlobal.button]}>CADASTRAR</Text>
           </TouchableOpacity> 
         </View>
       
