@@ -45,7 +45,7 @@ export default function MesaScreen({route,navigation }) {
 
         <TouchableOpacity
           style={[styleGlobal.button]}
-          onPress={() => navigation.navigate('cadastrarMesas')}
+          onPress={() => navigation.navigate('cadastrarMesas',route.params)}
         >
           <Text style={styleGlobal.button}>CADASTRAR MESAS</Text>
         </TouchableOpacity>

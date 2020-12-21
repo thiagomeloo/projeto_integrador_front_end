@@ -17,7 +17,7 @@ const autenticacao = {
                 if(result.notExist){
                     navigation.navigate('finalizarCadastroRestaurante', { user })
                 }else if(typeof result.restaurante != "undefined" ){
-                    navigation.navigate('main', { user })
+                    navigation.navigate('main', result.restaurante )
                 }
             })
         } else {

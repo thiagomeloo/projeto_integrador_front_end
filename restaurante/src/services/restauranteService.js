@@ -6,6 +6,7 @@ module.exports = {
     },
     async create(restauranteModel) {
         const requisicao = require('./requisicaoService')
+        restauranteModel = restauranteModel.params
         return await requisicao.post('/restaurante/create',{
          'restaurante_nome': restauranteModel.restaurante_nome,
          'restaurante_email':restauranteModel.restaurante_email,
