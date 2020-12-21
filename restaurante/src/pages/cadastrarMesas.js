@@ -21,7 +21,7 @@ import PageName from '../components/PageName'
 import MesaModel from '../model/MesaModel'
 
 //SERVICE
-import mesaService from '../services/mesaService'
+//import mesaService from '../services/mesaService'
 
 export default function inicialScreen({ route, navigation }) {
     console.log(route, 'cadastro')

@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 const api = axios.create({
-  baseURL: 'http://localhost:5005'
+  baseURL: 'https://reserva-mesas.herokuapp.com'
 })
 
 module.exports = api

@@ -21,7 +21,10 @@ export default function inicialScreen({ route, navigation }) {
     function finalizar(){
         route.params.restaurante_descricao = descricao 
         restauranteService.create(route)
-        navigation.navigate('main',route)
+        .then(result =>{
+            route.params.restaurante_codigo = result.data.restaurante_codigo
+        })
+        navigation.navigate('main',route.params)
          
           
       }
