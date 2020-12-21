@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, {useState, useEffect}from 'react'
 import {
   View,
   Text,
@@ -14,17 +14,41 @@ import ItemEdit from '../components/ItemEdit'
 //COMPONENTES
 import PageName from '../components/PageName'
 
+import restauranteService from '../services/restauranteService'
 
 export default function inicialScreen({route, navigation }) {
     
-    const restaurante = route.params
-    const [nome, setNome] = useState(route.params.restaurante_nome)
-    const [fantasia, setFantasia] = useState(route.params.restaurante_fantasia)
-    const [email, setEmail] = useState(route.params.restaurante_email)
-    const [cnpj, setCnpj] = useState(route.params.restaurante_cnpj)
-    const [telefone, setTelefone] = useState(route.params.restaurante_telefone)
-    const [regiao, setRegiao] = useState(route.params.restaurante_regiao)
+    const [restaurante,setRestaurante] = useState(route.params)
+    const [nome, setNome] = useState(restaurante.restaurante_nome)
+    const [fantasia, setFantasia] = useState(restaurante.restaurante_fantasia)
+    const [email, setEmail] = useState(restaurante.restaurante_email)
+    const [cnpj, setCnpj] = useState(restaurante.restaurante_cnpj)
+    const [telefone, setTelefone] = useState(restaurante.restaurante_telefone)
+    const [regiao, setRegiao] = useState(restaurante.restaurante_regiao)
 
+
+    async function updateRestaurante(){
+      
+    }
+
+    useEffect(() => {
+      navigation.addListener('focus', e => {
+        
+      })
+
+    }, [navigation])
+
+    useEffect(() => {
+        setRestaurante(route.params)
+    }, [route.params])
+
+    useEffect(() => {
+      setNome(restaurante.restaurante_nome)
+      setFantasia(restaurante.restaurante_fantasia)
+      setEmail(restaurante.restaurante_email)
+      setTelefone(restaurante.restaurante_telefone)
+      setRegiao(restaurante.restaurante_regiao)
+    }, [restaurante])
 
     return (
       <View style={styleGlobal.container}>

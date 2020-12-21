@@ -13,8 +13,8 @@ import styleEditPerfil from '../styles/styleEditPerfil'
 import DropDownPicker from 'react-native-dropdown-picker'
 
 
-
-
+import restauranteModel from '../model/restauranteModel'
+import restauranteService from '../services/restauranteService'
 
 export default function inicialScreen({ route, navigation }) {
 
@@ -24,10 +24,16 @@ export default function inicialScreen({ route, navigation }) {
   const [cnpj, setCnpj] = useState(route.params.restaurante_cnpj)
   const [telefone, setTelefone] = useState(route.params.restaurante_telefone)
   const [regiao, setRegiao] = useState(route.params.restaurante_regiao)
+  const [descricao, setDescricao] = useState(route.params.restaurante_descricao)
 
   function atualizar(){
-    
-    //navigation.navigate('main')
+    const restaurante = new restauranteModel(
+      nome,email,cnpj,
+      telefone,fantasia,regiao,
+      descricao,route.params.restaurante_codigo)
+      restauranteService.update(restaurante)
+      navigation.navigate('perfil', restaurante)
+
   }
 
   return (
@@ -44,7 +50,7 @@ export default function inicialScreen({ route, navigation }) {
         <Text style={styleEditPerfil.txt}>NOME COMPLETO:</Text>
         <TextInput style={styleEditPerfil.imput}
           value={nome}
-          onChangeText={nome => { setTelefone(nome) }}
+          onChangeText={nome => { setNome(nome) }}
         />
 
         <Text style={styleEditPerfil.txt}>FANTASIA:</Text>
@@ -110,7 +116,7 @@ export default function inicialScreen({ route, navigation }) {
           containerStyle={styleEditPerfil.dropdown_Container}
           itemStyle={styleEditPerfil.dropdown_item}
           dropDownStyle={styleEditPerfil.dropdown_style}
-          onChangeItem={item => setValorRegiao(item.value)}
+          onChangeItem={item => setRegiao(item.value)}
           zIndex={2}
         />
 
