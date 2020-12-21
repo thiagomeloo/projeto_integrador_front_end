@@ -18,7 +18,7 @@ import stylePratos from '../styles/stylePageName'
 import ItemListPratos from '../components/ItemListPratos'
 import PageName from '../components/PageName'
 
-export default function PratosScreen({ navigation }) {
+export default function PratosScreen({ route,navigation }) {
 
 
   const [listaPratos, setListaPratos] = useState(
@@ -65,7 +65,7 @@ export default function PratosScreen({ navigation }) {
       />
       <TouchableOpacity
         style={[styleGlobal.button]}
-        onPress={() => navigation.navigate('cadastrarPratos')}>
+        onPress={() => navigation.navigate('cadastrarPratos',route.params)}>
         <Text style={styleGlobal.button}>CADASTRAR PRATOS</Text>
       </TouchableOpacity>
     </View>
