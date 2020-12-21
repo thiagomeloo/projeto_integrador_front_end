@@ -13,7 +13,7 @@ function ItemListPratos(props) {
 
     for (let i = 0; i < props.star && props.star <=5 ; i++) {
         star.push(
-            <MaterialIcons name="star" size={16} color={colors.primary} />
+            <MaterialIcons key={i} name="star" size={16} color={colors.primary} />
         )
     }
 
