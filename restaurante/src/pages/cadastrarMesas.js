@@ -21,20 +21,21 @@ import PageName from '../components/PageName'
 import MesaModel from '../model/MesaModel'
 
 //SERVICE
-//import mesaService from '../services/mesaService'
+import mesaService from '../services/mesaService'
 
 export default function inicialScreen({ route, navigation }) {
-    console.log(route, 'cadastro')
+    console.log(route.params.restaurante_email, 'cadastro')
     const [data, setData] = useState('')
     const [hora, setHora] = useState('')
     const [qtdMesa, setQtdMesa] = useState(0)
     const [qtdPessoa, setQtdPessoa] = useState(0)
-    const [emailUser,setEmail] = useState('')
+    const [codigo,setCodigo] = useState(route.params.resturante_codigo)
+    const [email,setEmail] = useState(route.params.restaurante_email)
     
     function cadastrar() {
       let mesas = new MesaModel(data, hora,
-        qtdMesa, qtdPessoa,emailUser)
-        //console.log(mesas,'eba')
+        qtdMesa, qtdPessoa,codigo,email)
+        
         mesaService.create(mesas)
         navigation.navigate('main')
     }
