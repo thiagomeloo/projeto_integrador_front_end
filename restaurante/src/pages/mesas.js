@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   View,
   Text,
@@ -13,43 +13,59 @@ import styleGlobal from '../styles/styleGlobal'
 import PageName from '../components/PageName'
 import ItemListMesas from '../components/ItemListMesas'
 
+//SERVICE
+import mesaService from '../services/mesaService'
+//UTIL
+import dateFormat from '../util/dateFormat'
 
-export default function MesaScreen({route,navigation }) {
-  const [listaMesas, setListaMesas] = useState(
-    {'mesas':[
-      { "id": 1, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 1"}, "reserva_mesa":{"id":1}, "reserva_restaurante":{"id":1} },
-      { "id": 3, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 3"}, "reserva_mesa":{"id":2}, "reserva_restaurante":{"id":2} },
-      { "id": 2, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 2"}, "reserva_mesa":{"id":3}, "reserva_restaurante":{"id":3} },
-      { "id": 4, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 2"}, "reserva_mesa":{"id":3}, "reserva_restaurante":{"id":3} },
-      { "id": 5, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 2"}, "reserva_mesa":{"id":3}, "reserva_restaurante":{"id":3} },
 
-    ]}
-  )
+export default function MesaScreen({ route, navigation }) {
+  const [listaMesas, setListaMesas] = useState([])
+  const [listaMesasUpdate, setListaMesasUpdate] = useState(true)
+
+  async function loadDados() {
+    if (listaMesasUpdate) {
+      await mesaService.all().then((m) => {
+        setListaMesas(m.mesas)
+      })
+    }
+  }
+
+  useEffect(() => {
+    loadDados()
+  }, [listaMesasUpdate]) 
+
 
   return (
-    <View style={[styleGlobal.view,{height:'100%'}]}>
+    <View style={[styleGlobal.view, { height: '100%' }]}>
 
       <PageName
         name='MESAS'
       />
-    
+
       <FlatList
         style={[styleGlobal.list]}
-        data={listaMesas.mesas}
-        keyExtractor={item => item.id.toString()}
+        data={listaMesas}
+        keyExtractor={item => item.mesa_codigo.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) =>
-          <ItemListMesas funcEdit={() => navigation.navigate('editMesas',{item})}/>
+          <ItemListMesas 
+          hora={dateFormat.getHoraMin(item.mesa_data_hora)}
+          mes={dateFormat.getMont(item.mesa_data_hora)}
+          dia={dateFormat.getDayDateNoBrString(item.mesa_data_hora)}
+          mesa={item.mesa_quant_mesas}
+          pessoa={item.mesa_quant_pessoas}
+          funcEdit={() => navigation.navigate('editMesas',item)} />
         }
       />
 
-        <TouchableOpacity
-          style={[styleGlobal.button]}
-          onPress={() => navigation.navigate('cadastrarMesas',route.params)}
-        >
-          <Text style={styleGlobal.button}>CADASTRAR MESAS</Text>
-        </TouchableOpacity>
-      
+      <TouchableOpacity
+        style={[styleGlobal.button]}
+        onPress={() => navigation.navigate('cadastrarMesas', route.params)}
+      >
+        <Text style={styleGlobal.button}>CADASTRAR MESAS</Text>
+      </TouchableOpacity>
+
     </View>
   )
 }
