@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, { useState,useEffect } from 'react'
 import {
   View,
   Text,
@@ -16,37 +16,60 @@ import PageName from '../components/PageName'
 
 
 
-export default function inicialScreen({ navigation }) {
-    
-   
-    return (
-      <View style={styleGlobal.container}>
+export default function inicialScreen({ route, navigation }) {
 
-        <PageName name='PERFIL'/>
+  const [cliente, setCliente] = useState(route.params)
+  const [cpf, setCpf] = useState(cliente.cliente_cpf)
+  const [email, setEmail] = useState(cliente.cliente_email)
+  const [nome, setNome] = useState(cliente.cliente_nome)
+  const [sexo, setSexo] = useState(cliente.cliente_sexo)
+  const [telefone, setTelefone] = useState(cliente.cliente_telefone)
+  const [regiao, setRegiao] = useState(cliente.cliente_regiao)
 
-         <ItemEdit zIndex={-1} nav={()=> navigation.navigate('editPerfil')}/> 
-      
-        
-        <View style={stylePerfil.ViwInput}>
-            <Text style={stylePerfil.txt}>NOME COMPLETO:</Text>
-            <Text style={stylePerfil.imput}>FULANO DA SILVA ROCHA</Text>
 
-            <Text style={stylePerfil.txt}>FANTASIA:</Text>
-            <Text style={stylePerfil.imput}>RESTAURANTE DA CAPIVARA</Text>
+  useEffect(() => {
+    setCliente(route.params)
+  }, [route.params])
 
-            <Text style={stylePerfil.txt}>E-MAIL:</Text>
-            <Text style={stylePerfil.imput}>FULANO@RESTAURANTE.COM</Text>
+  useEffect(() => {
+    setCpf(cliente.cliente_cpf)
+    setNome(cliente.cliente_nome)
+    setEmail(cliente.cliente_email)
+    setTelefone(cliente.cliente_telefone)
+    setRegiao(cliente.cliente_regiao)
+    setSexo(cliente.cliente_sexo)
 
-            <Text style={stylePerfil.txt}>CNPJ:</Text>
-            <Text style={stylePerfil.imput}> XX.XXX.XXX/0001-XX</Text>    
+  }, [cliente])
 
-            <Text style={stylePerfil.txt}>TELEFONE:</Text>
-            <Text style={stylePerfil.imput}> (XX) XXXXX-XXXX</Text>
 
-            <Text style={stylePerfil.txt}>REGIÃO:</Text>
-            <Text style={stylePerfil.imput}> RN</Text>
+  return (
+    <View style={styleGlobal.container}>
+
+      <PageName name='PERFIL' />
+
+      <ItemEdit zIndex={-1} nav={() => navigation.navigate('editPerfil', route.params)} />
+
+
+      <View style={stylePerfil.ViwInput}>
+        <Text style={stylePerfil.txt}>NOME COMPLETO:</Text>
+        <Text style={stylePerfil.imput}>{nome}</Text>
+
+        <Text style={stylePerfil.txt}>E-MAIL:</Text>
+        <Text style={stylePerfil.imput}>{email}</Text>
+
+        <Text style={stylePerfil.txt}>CPF:</Text>
+        <Text style={stylePerfil.imput}> {cpf}</Text>
+
+        <Text style={stylePerfil.txt}>TELEFONE:</Text>
+        <Text style={stylePerfil.imput}> {telefone}</Text>
+
+        <Text style={stylePerfil.txt}>SEXO:</Text>
+        <Text style={stylePerfil.imput}>{sexo}</Text>
+
+        <Text style={stylePerfil.txt}>REGIÃO:</Text>
+        <Text style={stylePerfil.imput}> {regiao}</Text>
       </View>
     </View>
-    )
+  )
 }
 
