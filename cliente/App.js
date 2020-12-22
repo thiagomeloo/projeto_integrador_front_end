@@ -9,6 +9,8 @@ import loginClientePage from './src/pages/loginCliente'
 import finalizarCadastroClinte from './src/pages/finalizarCadastroCliente'
 import editPerfil from './src/pages/editPerfil'
 import escolherMesa from './src/pages/finalizarReservaEscolherMesa'
+import escolherPrato from './src/pages/finalizarReservaEscolherPrato'
+
 //NAVIGATIONS
 const Stack = createStackNavigator()
 
@@ -22,6 +24,8 @@ export default function App() {
         <Stack.Screen name="finalizarCadastroCliente"  component={finalizarCadastroClinte} />
         <Stack.Screen name="editPerfil"  component={editPerfil} />
         <Stack.Screen name="escolherMesa"  component={escolherMesa} />
+        <Stack.Screen name="escolherPrato"  component={escolherPrato} />
+
 
       </Stack.Navigator>
     </NavigationContainer>

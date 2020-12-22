@@ -90,11 +90,12 @@ export default function RestauranteScreen({ route, navigation }) {
           mes={dateFormat.getMont(item.mesa_data_hora)}
           dia={dateFormat.getDayDateNoBrString(item.mesa_data_hora)}
           quant={item.mesa_quant_mesas}
-          
+          func={()=> {navigation.navigate('escolherPrato')}}
           />
-
         }
       />
+
+      
 
     </View>
   )

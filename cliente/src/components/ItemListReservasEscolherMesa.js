@@ -17,7 +17,9 @@ function ItemListReservasEscolherMesa(props) {
             <View style={style.viewHora}>
                 <View style={style.viewTopo}>
                     <Text style={style.data_hora}>{props.hora}</Text>
-                    <TouchableOpacity style={style.btnReservar}>
+                    <TouchableOpacity 
+                        onPress={props.func}
+                    style={style.btnReservar}>
                         <Text style={style.txtBtnReservar}>RESERVAR</Text>
                     </TouchableOpacity>
                 </View>
