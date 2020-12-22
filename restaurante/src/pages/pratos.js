@@ -1,41 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   View,
   Text,
   TouchableOpacity,
   FlatList,
-  Image
+
 } from 'react-native'
 
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
-import styleListPratos from '../styles/styleItemListPratos'
-import stylePratos from '../styles/stylePageName'
 
 
+//SERVICE
+import pratosService from '../services/pratoService'
 
 //COMPONENTES
 import ItemListPratos from '../components/ItemListPratos'
 import PageName from '../components/PageName'
 
-export default function PratosScreen({ route,navigation }) {
+export default function PratosScreen({ route, navigation }) {
 
-  
-  const [listaPratos, setListaPratos] = useState(
-    {
-      'pratos': [
-        { "id": 1, "nome": "Sorvete de caju com cuscuz", "descricao": "descricao do prato, texto grande para testar a lista de pratos que existem.", 'categoria': 'sobremesa', 'quantidade': 2,'preco':2.50, "star": 2 },
-        { "id": 2, "nome": "Sorvete", "descricao": "descricao do prato", 'categoria': 'sobremesa', 'quantidade': 2, 'preco':2.50, "star": 3 },
-        { "id": 3, "nome": "Sorvete", "descricao": "descricao do prato", 'categoria': 'sobremesa', 'quantidade': 2,'preco':2.50, "star": 4 },
-        { "id": 4, "nome": "Sorvete", "descricao": "descricao do prato", 'categoria': 'sobremesa', 'quantidade': 2,'preco':2.50, "star": 2 },
-        { "id": 5, "nome": "Sorvete", "descricao": "descricao do prato", 'categoria': 'sobremesa', 'quantidade': 2,'preco':2.50, "star": 3 },
-        { "id": 6, "nome": "Sorvete", "descricao": "descricao do prato", 'categoria': 'sobremesa', 'quantidade': 2, 'preco':2.50,"star": 4 },
-        { "id": 7, "nome": "Sorvete", "descricao": "descricao do prato", 'categoria': 'sobremesa', 'quantidade': 2, 'preco':2.50, "star": 4 }
-      ]
+
+  const [listaPratos, setListaPratos] = useState([])
+  const [listaPratosUpdate, setListaPratosUpdate] = useState(true)
+
+  async function loadDados() {
+    console.log('asd')
+    if (listaPratosUpdate) {
+      await pratosService.all().then((p) => {
+        setListaPratos(p.pratos)
+      })
     }
-  )
+  }
 
-
+  useEffect(() => {
+    loadDados()
+  }, [listaPratosUpdate])
   return (
     <View style={styleGlobal.view}>
 
@@ -43,21 +43,18 @@ export default function PratosScreen({ route,navigation }) {
         name='CARDÁPIO'
       />
 
-
-
       <FlatList
         style={styleGlobal.list}
-        data={listaPratos.pratos}
-        keyExtractor={item => item.id.toString()}
+        data={listaPratos}
+        keyExtractor={item => item.prato_codigo.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) =>
           <ItemListPratos
-            nome={item.nome}
-            descricao={item.descricao}
-            categoria={item.categoria}
-            quantidade={item.quantidade}
-            preco={item.preco}
-            star={item.star}
+            nome={item.prato_nome}
+            descricao={item.prato_descricao}
+            categoria={item.prato_categoria}
+            quantidade={item.prato_quantidade}
+            preco={item.prato_preco}
             funcEdit={() => navigation.navigate('editPratos', item)}
             funcRemove={() => removePrato(item)}
           >
@@ -66,7 +63,7 @@ export default function PratosScreen({ route,navigation }) {
       />
       <TouchableOpacity
         style={[styleGlobal.button]}
-        onPress={() => navigation.navigate('cadastrarPratos',route.params)}>
+        onPress={() => navigation.navigate('cadastrarPratos', route.params)}>
         <Text style={styleGlobal.button}>CADASTRAR PRATOS</Text>
       </TouchableOpacity>
     </View>
