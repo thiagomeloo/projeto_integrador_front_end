@@ -33,7 +33,10 @@ export default function inicialScreen({route, navigation }) {
         valorRegiao)
         
         clienteService.create(cliente)
-        navigation.navigate('main',cliente)
+        .then(result =>{
+          route.params.cliente_codigo = result.data.cliente_codigo
+      })
+        navigation.navigate('main',route.params)
         
     }
     

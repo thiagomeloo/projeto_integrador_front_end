@@ -16,7 +16,7 @@ const autenticacao = {
                 if(result.notExist){
                     navigation.navigate('finalizarCadastroCliente', {user}) 
                 }else if(typeof result.cliente != "undefined" ){
-                    navigation.navigate('main', { user })
+                    navigation.navigate('main', result.cliente)
                 }
             })
         } else {
