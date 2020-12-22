@@ -25,6 +25,9 @@ import PageName from '../components/PageName'
 //SERVICES
 import mesaService from '../services/mesaService'
 
+//UTIL
+import dateFormat from '../util/dateFormat'
+
 export default function RestauranteScreen({ route, navigation }) {
 
   const [qtdPessoa, setQtdPessoa] = useState(0)
@@ -37,7 +40,7 @@ export default function RestauranteScreen({ route, navigation }) {
 
 
   async function loadDados(){
-    console.log('asd')
+    
     if (listaMesaUpdate) {
     
       await mesaService.all().then((r) => {
@@ -74,7 +77,7 @@ export default function RestauranteScreen({ route, navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-
+      
       <FlatList
         style={[styleGlobal.list]}
         data={listaMesa}
@@ -83,6 +86,11 @@ export default function RestauranteScreen({ route, navigation }) {
         renderItem={({ item }) =>
           <ItemListReservasMesa
           key={item.mesa_codigo}
+          hora={dateFormat.getHoraMin(item.mesa_data_hora)}
+          mes={dateFormat.getMont(item.mesa_data_hora)}
+          dia={dateFormat.getDayDateNoBrString(item.mesa_data_hora)}
+          quant={item.mesa_quant_mesas}
+          
           />
 
         }
