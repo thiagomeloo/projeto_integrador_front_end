@@ -27,7 +27,7 @@ import mesaModel from '../model/MesaModel'
 import mesaService from '../services/mesaService'
 
 export default function inicialScreen({ route, navigation }) {
-  console.log(route.params, 'routeee')
+  
   const [data, setData] = useState(dateFormat.formatDate(route.params.mesa_data_hora))
   const [hora, setHora] = useState(dateFormat.getHoraMin(route.params.mesa_data_hora))
   const [qtdMesa, setQtdMesa] = useState(route.params.mesa_quant_mesas)

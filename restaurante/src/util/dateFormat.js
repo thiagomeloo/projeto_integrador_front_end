@@ -3,8 +3,13 @@ const dateFormat = {
         let parts = date.split("-");
         return parts[2] +'-'+parts[1]+'-'+parts[0]
     },
+    formatDate(date) {
+        let parts = date.split("T");
+        parts = parts[0].split('-')
+        return parts[2]+'/'+parts[1]+'/'+parts[0]
+    },
     formatDateToStringNoBr(date) {
-        let parts = date.split("-");
+        let parts = date.split("/");
         return parts[2] +'-'+parts[1]+'-'+parts[0]
     },
     getDateBrToString(date) {
@@ -20,15 +25,16 @@ const dateFormat = {
         return new Date(parts[2], parts[1] - 1, parts[0])
     },
     getDayDateNoBrString(date){
-        let parts = date.split("-");
-        return parts[2]
+        let parts = date.split("-")
+        parts = parts[2].split('T')
+        return parts[0]
     },
     getDayDateBrString(date){
         let parts = date.split("-");
         return parts[0]
     },
     getMont(dateNoBr){
-        //console.log(dateNoBr)
+        
         var parts = dateNoBr.split("-")
         let day = parts[2]
         let month = parts[1]
@@ -47,15 +53,16 @@ const dateFormat = {
             "Nov",
             "Dez"
           ]
-        return meses[new Date(year,month,day).getMonth()-1]
+        return meses[month-1]
     },
     getHoraMin(dateNoBr){
         
         let date = new Date(dateNoBr)
+       
         let hora = '' + date.getHours()
         let min = '' + date.getMinutes()
         if(hora.length < 2){
-            hora = '0'+ hora
+            hora = '0'+ hora 
         }
         if(min.length < 2){
             min = '0'+ min

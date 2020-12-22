@@ -37,12 +37,11 @@ export default function inicialScreen({ route, navigation }) {
   const [qtdPessoa, setQtdPessoa] = useState(0)
   const [codigo, setCodigo] = useState(route.params.resturante_codigo)
   const [email, setEmail] = useState(route.params.restaurante_email)
-
+  
   function cadastrar() {
-    let dataFormatada = dateFormat.formatDateToStringNoBr('20-02-2020')
+    let dataFormatada = dateFormat.formatDateToStringNoBr(data)
     let mesas = new MesaModel(dataFormatada, hora,
-      qtdMesa, qtdPessoa, codigo, email)
-
+      qtdMesa, qtdPessoa, codigo, email)   
     mesaService.create(mesas)
     navigation.navigate('main')
   }
