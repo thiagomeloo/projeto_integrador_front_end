@@ -26,7 +26,7 @@ export default function RestauranteScreen({ navigation }) {
 
 
   async function loadDados(){
-    console.log('asd')
+   
     if (listaRestauranteUpdate) {
       await restauranteService.all().then((r) => {
         setListaRestaurante(r.restaurantes)
@@ -56,7 +56,7 @@ export default function RestauranteScreen({ navigation }) {
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) =>
         <ItemListRestaurante  key={item.restaurante_codigo}
-          nome={item.restaurante_nome}
+          nome={item.restaurante_fantasia}
           descricao={item.restaurante_descricao}
           star={3}
           func={()=>{openReservas(item)}}
