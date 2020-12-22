@@ -6,6 +6,10 @@ import {
   TextInput,
 } from 'react-native'
 
+
+import { TextInputMask } from 'react-native-masked-text'
+
+
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
 import styleCadastro from '../styles/styleCadastro'
@@ -23,83 +27,98 @@ import MesaModel from '../model/MesaModel'
 //SERVICE
 import mesaService from '../services/mesaService'
 
+//UTIL
+import dateFormat from '../util/dateFormat'
+
 export default function inicialScreen({ route, navigation }) {
-    console.log(route.params.restaurante_email, 'cadastro')
-    const [data, setData] = useState('')
-    const [hora, setHora] = useState('')
-    const [qtdMesa, setQtdMesa] = useState(0)
-    const [qtdPessoa, setQtdPessoa] = useState(0)
-    const [codigo,setCodigo] = useState(route.params.resturante_codigo)
-    const [email,setEmail] = useState(route.params.restaurante_email)
-    
-    function cadastrar() {
-      let mesas = new MesaModel(data, hora,
-        qtdMesa, qtdPessoa,codigo,email)
-        
-        mesaService.create(mesas)
-        navigation.navigate('main')
-    }
-    return (
+  const [data, setData] = useState('')
+  const [hora, setHora] = useState('')
+  const [qtdMesa, setQtdMesa] = useState(0)
+  const [qtdPessoa, setQtdPessoa] = useState(0)
+  const [codigo, setCodigo] = useState(route.params.resturante_codigo)
+  const [email, setEmail] = useState(route.params.restaurante_email)
+
+  function cadastrar() {
+    let dataFormatada = dateFormat.formatDateToStringNoBr('20-02-2020')
+    let mesas = new MesaModel(dataFormatada, hora,
+      qtdMesa, qtdPessoa, codigo, email)
+
+    mesaService.create(mesas)
+    navigation.navigate('main')
+  }
+  return (
 
 
-      <View style={[styleGlobal.container, styleCadastrarMesa.container]}>
-        <PageName name='CADASTRAR MESAS' />
-        <View style={[styleCadastro.ViwInput]}>
-          <Text style={styleCadastro.txt}>DATA:</Text>
-          <TextInput style={styleCadastro.imput} 
-          value={data} onChangeText={TextInput=>setData(TextInput)}
-          />
+    <View style={[styleGlobal.container, styleCadastrarMesa.container]}>
+      <PageName name='CADASTRAR MESAS' />
+      <View style={[styleCadastro.ViwInput]}>
+        <Text style={styleCadastro.txt}>DATA:</Text>
+
+        <TextInputMask
+          type={'datetime'}
+          options={{
+            format: 'DD/MM/YYYY'
+          }}
+          value={data}
+          onChangeText={data => {setData(data)}}
+          style={styleCadastro.imput}
+        />
+
+        <Text style={styleCadastro.txt}>HORA:</Text>
+        <TextInputMask 
+          type={'datetime'}
+          options={{
+            format: 'HH:mm'
+          }}
+          style={[styleCadastro.imput, { marginBottom: 20 }]}
+          value={hora} 
+          onChangeText={TextInput => setHora(TextInput)}
+        />
 
 
-          <Text style={styleCadastro.txt}>HORA:</Text>
-          <TextInput style={[styleCadastro.imput, { marginBottom: 20 }]}
-          value={hora} onChangeText={TextInput=>setHora(TextInput)}
-          />
-
-
-          <View>
-            <View style={styleCadastrarMesa.box}>
-              <Text style={styleCadastrarMesa.txt}>NÚMERO DE MESAS</Text>
-              <View style={{ flexDirection: 'row-reverse', alignSelf: 'center' }}>
-                <TouchableOpacity zIndex={-1} onPress={() => setQtdMesa(qtdMesa + 1)}>
-                  <Octicons name="diff-added" size={35} color={colors.primary} />
-                </TouchableOpacity>
-                <Text style={styleCadastrarMesa.quant}>{qtdMesa} {<FontAwesome name="inbox" size={30} color={colors.primary} />}</Text>
-                <TouchableOpacity zIndex={-1} onPress={() => qtdMesa > 0 ? setQtdMesa(qtdMesa - 1) : false}>
-                  <Octicons name="diff-removed" size={35} color={colors.primary} />
-                </TouchableOpacity>
-              </View>
+        <View>
+          <View style={styleCadastrarMesa.box}>
+            <Text style={styleCadastrarMesa.txt}>NÚMERO DE MESAS</Text>
+            <View style={{ flexDirection: 'row-reverse', alignSelf: 'center' }}>
+              <TouchableOpacity zIndex={-1} onPress={() => setQtdMesa(qtdMesa + 1)}>
+                <Octicons name="diff-added" size={35} color={colors.primary} />
+              </TouchableOpacity>
+              <Text style={styleCadastrarMesa.quant}>{qtdMesa} {<FontAwesome name="inbox" size={30} color={colors.primary} />}</Text>
+              <TouchableOpacity zIndex={-1} onPress={() => qtdMesa > 0 ? setQtdMesa(qtdMesa - 1) : false}>
+                <Octicons name="diff-removed" size={35} color={colors.primary} />
+              </TouchableOpacity>
             </View>
-
-            <View style={styleCadastrarMesa.box}>
-              <Text style={styleCadastrarMesa.txt}>NÚMERO MÁXIMO DE PESSOAS</Text>
-              <Text style={styleCadastrarMesa.descricao}>(COM MAIS DE 4 ANOS)</Text>
-              <View style={{ flexDirection: 'row-reverse', alignSelf: 'center' }}>
-                <TouchableOpacity zIndex={0} onPress={() => setQtdPessoa(qtdPessoa + 1)}>
-                  <Octicons name="diff-added" size={35} color={colors.primary} />
-                </TouchableOpacity>
-                <Text style={styleCadastrarMesa.quant}>{qtdPessoa} {<FontAwesome name="user" size={30} color={colors.primary} />}</Text>
-
-                <TouchableOpacity zIndex={-1} onPress={() => qtdPessoa > 0 ? setQtdPessoa(qtdPessoa - 1) : false} >
-                  <Octicons name="diff-removed" size={35} color={colors.primary} />
-                </TouchableOpacity>
-              </View>
-            </View>
-
           </View>
 
+          <View style={styleCadastrarMesa.box}>
+            <Text style={styleCadastrarMesa.txt}>NÚMERO MÁXIMO DE PESSOAS</Text>
+            <Text style={styleCadastrarMesa.descricao}>(COM MAIS DE 4 ANOS)</Text>
+            <View style={{ flexDirection: 'row-reverse', alignSelf: 'center' }}>
+              <TouchableOpacity zIndex={0} onPress={() => setQtdPessoa(qtdPessoa + 1)}>
+                <Octicons name="diff-added" size={35} color={colors.primary} />
+              </TouchableOpacity>
+              <Text style={styleCadastrarMesa.quant}>{qtdPessoa} {<FontAwesome name="user" size={30} color={colors.primary} />}</Text>
 
-          <View zIndex={-1}>
-            <TouchableOpacity
-              style={[styleCadastro.Btn]}
-              onPress={() => cadastrar()}
-            >
-              <Text style={styleGlobal.button}>CADASTRAR</Text>
-            </TouchableOpacity>
+              <TouchableOpacity zIndex={-1} onPress={() => qtdPessoa > 0 ? setQtdPessoa(qtdPessoa - 1) : false} >
+                <Octicons name="diff-removed" size={35} color={colors.primary} />
+              </TouchableOpacity>
+            </View>
           </View>
 
         </View>
+
+
+        <View zIndex={-1}>
+          <TouchableOpacity
+            style={[styleCadastro.Btn]}
+            onPress={() => cadastrar()}
+          >
+            <Text style={styleGlobal.button}>CADASTRAR</Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
-    )
+    </View>
+  )
 }
 

@@ -48,6 +48,7 @@ export default function inicialScreen({route, navigation }) {
       setEmail(restaurante.restaurante_email)
       setTelefone(restaurante.restaurante_telefone)
       setRegiao(restaurante.restaurante_regiao)
+      setCnpj(restaurante.restaurante_cnpj)
     }, [restaurante])
 
     return (

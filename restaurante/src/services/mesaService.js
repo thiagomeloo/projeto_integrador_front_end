@@ -11,7 +11,7 @@ module.exports = {
         if(MesaModel.mesa_codigo == null){
             restauranteService.findByEmail(MesaModel.mesa_user)
             .then((result)=>{
-                console.log(result)
+                //console.log(result)
                 return requisicao.post('/mesa/create/',{
                     'mesa_data_hora':MesaModel.mesa_data+' '+MesaModel.mesa_hora,
                     'mesa_quant_mesas':MesaModel.mesa_quant_mesas,

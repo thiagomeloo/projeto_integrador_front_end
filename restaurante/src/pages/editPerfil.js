@@ -7,6 +7,8 @@ import {
   TextInput,
 } from 'react-native'
 
+import { TextInputMask } from 'react-native-masked-text'
+
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
 import styleEditPerfil from '../styles/styleEditPerfil'
@@ -26,13 +28,13 @@ export default function inicialScreen({ route, navigation }) {
   const [regiao, setRegiao] = useState(route.params.restaurante_regiao)
   const [descricao, setDescricao] = useState(route.params.restaurante_descricao)
 
-  function atualizar(){
+  function atualizar() {
     const restaurante = new restauranteModel(
-      nome,email,cnpj,
-      telefone,fantasia,regiao,
-      descricao,route.params.restaurante_codigo)
-      restauranteService.update(restaurante)
-      navigation.navigate('perfil', restaurante)
+      nome, email, cnpj,
+      telefone, fantasia, regiao,
+      descricao, route.params.restaurante_codigo)
+    restauranteService.update(restaurante)
+    navigation.navigate('perfil', restaurante)
 
   }
 
@@ -43,8 +45,6 @@ export default function inicialScreen({ route, navigation }) {
         source={require('../../assets/icon2.png')}
       />
       <Text style={[styleEditPerfil.txtIcon, styleGlobal.txtIcon]}>EDITAR PERFIL</Text>
-
-
 
       <View style={styleEditPerfil.ViwInput}>
         <Text style={styleEditPerfil.txt}>NOME COMPLETO:</Text>
@@ -61,21 +61,27 @@ export default function inicialScreen({ route, navigation }) {
 
         <Text style={styleEditPerfil.txt}>E-MAIL:</Text>
         <TextInput style={styleEditPerfil.imput}
+          editable={false}
           value={email}
           onChangeText={email => { setEmail(email) }}
         />
 
         <Text style={styleEditPerfil.txt}>CNPJ:</Text>
-        <TextInput style={styleEditPerfil.imput}
+        <TextInputMask 
+          type={'cnpj'}
+          style={styleEditPerfil.imput}
           value={cnpj}
           onChangeText={cnpj => { setCnpj(cnpj) }}
         />
 
         <Text style={styleEditPerfil.txt}>TELEFONE:</Text>
-        <TextInput style={styleEditPerfil.imput}
-          value={telefone}
-          onChangeText={telefone => { setTelefone(telefone) }}
-        />
+
+        <TextInputMask
+            type={'cel-phone'}
+            value={telefone}
+            onChangeText={text => {setTelefone(text)}}
+            style={styleEditPerfil.imput}
+          />
 
         <Text style={styleEditPerfil.txt}>REGIÃO:</Text>
         <DropDownPicker
