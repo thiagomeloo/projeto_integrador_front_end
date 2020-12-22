@@ -58,6 +58,8 @@ export default function ReservasScreen({ navigation }) {
             data={item.reserva_data}
             cliente={item.reserva_cliente}
             mesa={item.reserva_mesa}
+            pessoa={item.reserva_qtd_pessoas}
+            prato="3"
             restaurante={item.reserva_restaurante}
             funcRemove={() => console.log('remover')}
           >
