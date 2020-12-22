@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {
   View,
   FlatList,
@@ -13,17 +13,31 @@ import styleReservas from '../styles/styleReservas'
 import PageName from '../components/PageName'
 import ItemListReserva from '../components/ItemListReservas'
 
+//SERVICES
+import reservaService from '../services/reservaService'
+
+//UTIL
+import dateFormat from '../util/dateFormat'
+
 export default function ReservasScreen({ navigation }) {
   
 
-  const [listaReservas, setListaReservas] = useState(
-    {'reservas':[
-      { "id": 1, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 1"}, "reserva_mesa":{"id":1}, "reserva_restaurante":{"id":1} },
-      { "id": 3, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 3"}, "reserva_mesa":{"id":2}, "reserva_restaurante":{"id":2} },
-      { "id": 2, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 2"}, "reserva_mesa":{"id":3}, "reserva_restaurante":{"id":3} },
-    ]}
-  )
+  const [listaReservas, setListaReservas] = useState([])
+  const [listaReservaUpdate, setListaReservaUpdate] = useState(true)
 
+
+  async function loadDados(){
+   
+    if (listaReservaUpdate) {
+      await reservaService.all().then((r) => {
+        setListaReservas(r.reservas)
+      })
+    }
+  }
+
+  useEffect(() => {
+    loadDados()
+  }, [listaReservaUpdate])
 
   
   return (
@@ -32,11 +46,15 @@ export default function ReservasScreen({ navigation }) {
       <PageName name='Minhas Reservas' />
       <FlatList
         style={styleGlobal.list}
-        data={listaReservas.reservas}
-        keyExtractor={item => item.id.toString()}
+        data={listaReservas}
+        keyExtractor={item => item.reserva_codigo + ''}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) =>
           <ItemListReserva
+            key={item.reserva_codigo}
+            mes={dateFormat.getMont(item.reserva_data)}
+            dia={dateFormat.getDayDateNoBrString(item.reserva_data)}
+            hora={dateFormat.getHoraMin(item.reserva_data)}
             data={item.reserva_data}
             cliente={item.reserva_cliente}
             mesa={item.reserva_mesa}
