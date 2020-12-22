@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   View,
   Text,
@@ -20,17 +20,23 @@ import restauranteService from '../services/restauranteService'
 
 export default function RestauranteScreen({ navigation }) {
 
-  const [listaRestaurante, setListaRestaurante] = useState({})
+  const [listaRestaurante, setListaRestaurante] = useState([])
   const [listaRestauranteUpdate, setListaRestauranteUpdate] = useState(true)
 
 
 
-  if (listaRestauranteUpdate) {
-    restauranteService.all().then((r) => {
-      setListaRestauranteUpdate(false)
-      return setListaRestaurante(r.restaurantes)
-    })
+  async function loadDados(){
+    console.log('asd')
+    if (listaRestauranteUpdate) {
+      await restauranteService.all().then((r) => {
+        setListaRestaurante(r.restaurantes)
+      })
+    }
   }
+
+  useEffect(() => {
+    loadDados()
+  }, [listaRestauranteUpdate])
 
 
 
@@ -42,9 +48,7 @@ export default function RestauranteScreen({ navigation }) {
 
   return (
     <View style={styleRestaurante.container}>
-
       <PageName name='RESTAURANTES' />
-
       <FlatList
         style={[styleGlobal.list]}
         data={listaRestaurante}

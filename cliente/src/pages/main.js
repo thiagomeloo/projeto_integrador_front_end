@@ -18,7 +18,7 @@ import perfilPage from './perfil'
 import colors from '../styles/colors/colors'
 
 
-export default function mainScreen({ navigation }) {
+export default function mainScreen({ route, navigation }) {
   return (
     <Tab.Navigator
       
@@ -56,9 +56,9 @@ export default function mainScreen({ navigation }) {
         
       }}>
       
-      <Tab.Screen name="reserva" component={reservaPage} />
-      <Tab.Screen name="restaurante" component={restauntePage} />
-      <Tab.Screen name="perfil" component={perfilPage} />
+      <Tab.Screen name="reserva" component={reservaPage} initialParams={route.params}/>
+      <Tab.Screen name="restaurante" component={restauntePage} initialParams={route.params}/>
+      <Tab.Screen name="perfil" component={perfilPage} initialParams={route.params}/>
     </Tab.Navigator>
   )
 }

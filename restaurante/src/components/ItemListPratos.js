@@ -38,6 +38,7 @@ function ItemListPratos(props) {
             </Text>
             <Text style={style.categoria}>Categoria: {props.categoria}</Text>
             <Text style={style.qtdPessoas}>Serve até: {props.quantidade} pessoa(s)</Text>
+            <Text style={style.qtdPessoas}>R$ {props.preco}</Text>
             <Text style={style.start}>{star}</Text>
             <View style={style.rodape}>
                 <MaterialIcons name="room-service" size={50} color={colors.primary} />

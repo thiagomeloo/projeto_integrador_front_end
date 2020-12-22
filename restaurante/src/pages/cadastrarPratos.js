@@ -50,9 +50,9 @@ export default function inicialScreen({ route, navigation }) {
         <DropDownPicker
           items={[
             { label: 'SELECIONE...', color: 'red', value: 'selecione', hidden: true },
-            { label: 'ENTRADA', value: 'ENTRADA' },
-            { label: 'PRINCIPAL', value: 'PRINCIAP' },
-            { label: 'SOBREMESA', value: 'SOBREMESA' },
+            { label: 'ENTRADA', value: 'entrada' },
+            { label: 'PRINCIPAL', value: 'principal' },
+            { label: 'SOBREMESA', value: 'sobremesa' },
 
           ]}
           defaultValue={categoria}
@@ -71,7 +71,6 @@ export default function inicialScreen({ route, navigation }) {
         <Text style={styleCadastro.txt}>PREÇO:</Text>
         <TextInput style={styleCadastro.imput} value={preco}
           onChangeText={TextInput => setPreco(TextInput)}
-
         />
         <Text style={styleCadastro.txt}>DESCRIÇÃO:</Text>
         <Textarea
