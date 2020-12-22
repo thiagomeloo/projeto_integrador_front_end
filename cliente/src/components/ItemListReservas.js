@@ -14,30 +14,30 @@ function ItemListReservas(props) {
     return (
         <View style={style.container}>
             <View style={style.viewData}>
-                <Text style={style.data_mes}>Nov</Text>
+                <Text style={style.data_mes}>{props.mes}</Text>
                 <Text style={style.data_nome_dia}>Dia</Text>
-                <Text style={style.data_dia}>15</Text>
+                <Text style={style.data_dia}>{props.dia}</Text>
             </View>
             <View style={style.viewHora}>
                 <View style={style.viewTopo}>
-                    <Text style={style.data_hora}>15:00</Text>
+                    <Text style={style.data_hora}>{props.hora}</Text>
                     <TouchableOpacity>
                         <MaterialIcons style={style.iconDelete}  name="delete" size={35} color={colors.primary} />
                     </TouchableOpacity>
                 </View>
-                <Text style={style.nome}>Fulano da silva teste de moreira</Text>
+                <Text style={style.nome}>{props.nome}</Text>
                 <View style={style.viewDetalhes}>
                     <View>
                         <Text style={style.txtPratos}>Pratos:</Text>
                         <View style={style.IconPratos}>
-                            <Text style={style.txtIcon}>2</Text>
+                            <Text style={style.txtIcon}>{props.prato}</Text>
                             <MaterialIcons name="restaurant" size={30} color={colors.fontColorPrimary} />
                         </View>
                     </View>
                     <View>
                         <Text style={style.txtPratos}>Pessoas:</Text>
                         <View style={style.IconPratos}>
-                            <Text style={style.txtIcon}>2</Text>
+                            <Text style={style.txtIcon}>{props.pessoa}</Text>
                             <FontAwesome name="user" size={30} color={colors.fontColorPrimary} />
                         </View>
                     </View>
