@@ -8,8 +8,8 @@ module.exports = class MesaModel {
             this.prato_preco = prato_preco,
             this.prato_descricao = prato_descricao,
             this.prato_restaurante_codigo = prato_restaurante_codigo,
-            this.prato_user = prato_user
-       
+            this.prato_user = prato_user,
+            this.prato_codigo = prato_codigo
     }
 
 }

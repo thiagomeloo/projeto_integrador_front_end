@@ -12,21 +12,28 @@ import styleGlobal from '../styles/styleGlobal'
 import styleCadastro from '../styles/styleCadastro'
 import DropDownPicker from 'react-native-dropdown-picker'
 import Textarea from 'react-native-textarea'
-
-import PageName from '../components/PageName'
-
-
+//MODEL
+import pratoModel from '../model/pratoModel'
+//SERVICE
+import pratoService from '../services/pratoService'
 
 export default function inicialScreen({ route, navigation }) {
   
-  const [nome, setNome] = useState(route.params.nome)
-  const [quant, setQuant] = useState(route.params.quantidade+'')
-  const [preco, setPreco] = useState(route.params.preco+'')
-  const [descricao, setDescricao] = useState(route.params.descricao)
-  const [categoria, setCategoria] = useState(route.params.categoria)
-  const [codigo, setCodigo] = useState(route.params.resturante_codigo)
-  const [email, setEmail] = useState(route.params.restaurante_email)
-  console.log(categoria)
+  const [nome, setNome] = useState(route.params.prato_nome)
+  const [quant, setQuant] = useState(route.params.prato_quantidade+'')
+  const [preco, setPreco] = useState(route.params.prato_preco+'')
+  const [descricao, setDescricao] = useState(route.params.prato_descricao)
+  const [categoria, setCategoria] = useState(route.params.prato_categoria)
+  const [codigo, setCodigo] = useState(route.params.prato_codigo)
+  
+  function atualizar(){
+    const prato = new pratoModel(nome,categoria,quant, preco,
+        descricao, route.params.prato_restaurante_codigo,'',codigo)
+      
+      pratoService.update(prato)
+      navigation.navigate('pratos', prato)
+
+  }
   
 
   return (
@@ -80,7 +87,7 @@ export default function inicialScreen({ route, navigation }) {
         <View zIndex={1}>
           <TouchableOpacity
             style={[styleCadastro.Btn,{marginBottom:25}]}
-            onPress={() => navigation.navigate('main')}
+            onPress={() => atualizar()}
           >
             <Text style={styleGlobal.button}>ATUALIZAR</Text>
           </TouchableOpacity>
