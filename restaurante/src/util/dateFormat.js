@@ -61,6 +61,8 @@ const dateFormat = {
        
         let hora = '' + date.getHours()
         let min = '' + date.getMinutes()
+        hora = parseInt(hora)+3
+        hora= hora+''
         if(hora.length < 2){
             hora = '0'+ hora 
         }
