@@ -1,27 +1,42 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {
   View,
   FlatList,
+  RefreshControl
 } from 'react-native'
 
 //STYLES
 import styleReservas from '../styles/styleReservas'
 import styleGlobal from '../styles/styleGlobal'
+import colors from '../styles/colors/colors'
+
 
 
 //COMPONENTES
 import PageName from '../components/PageName'
 import ItemListReserva from '../components/ItemListReservas'
 
-export default function ReservasScreen({ navigation }) {
+import reservaService from '../services/reservaService'
+
+export default function ReservasScreen({route, navigation }) {
   
-  const [listaReservas, setListaReservas] = useState(
-    {'reservas':[
-      { "id": 1, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 1"}, "reserva_mesa":{"id":1}, "reserva_restaurante":{"id":1} },
-      { "id": 3, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 3"}, "reserva_mesa":{"id":2}, "reserva_restaurante":{"id":2} },
-      { "id": 2, "reserva_data": "04-12-2020", "reserva_cliente":{"nome":"cliente fulano 2"}, "reserva_mesa":{"id":3}, "reserva_restaurante":{"id":3} },
-    ]}
-  )
+  const [listaReserva, setListaReserva] = useState([])
+  const [listaReservaUpdate, setListaReservaUpdate] = useState(true)
+
+  async function loadDados() {
+    
+    if (listaReservaUpdate) {
+      await reservaService.findByRestaurante(route.params.restaurante_codigo).then((r) => {
+        setListaReserva(r.reservas)
+      })
+      .catch((error)=>{})
+      .then(()=>{setListaReservaUpdate(false)})
+    }
+  }
+
+  useEffect(() => {
+    loadDados()
+  }, [listaReservaUpdate])
   
   return (
     <View style={[styleReservas.container]}>
@@ -30,9 +45,16 @@ export default function ReservasScreen({ navigation }) {
 
       <FlatList
         style={[styleGlobal.list,styleReservas.list]}
-        data={listaReservas.reservas}
-        keyExtractor={item => item.id.toString()}
+        data={listaReserva}
+        keyExtractor={item => item.reserva_codigo.toString()}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl 
+            refreshing={listaReservaUpdate} 
+            onRefresh={()=>{setListaReservaUpdate(true)}}
+            progressBackgroundColor={colors.primary}
+          />
+        }
         renderItem={({ item }) =>
           <ItemListReserva
             data={item.reserva_data}

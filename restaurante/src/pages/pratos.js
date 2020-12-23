@@ -4,15 +4,16 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
-
+  RefreshControl
 } from 'react-native'
 
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
+import colors from '../styles/colors/colors'
 
 
 //SERVICE
-import pratosService from '../services/pratoService'
+import pratoService from '../services/pratoService'
 
 //COMPONENTES
 import ItemListPratos from '../components/ItemListPratos'
@@ -25,17 +26,20 @@ export default function PratosScreen({ route, navigation }) {
   const [listaPratosUpdate, setListaPratosUpdate] = useState(true)
 
   async function loadDados() {
-    console.log('asd')
+    
     if (listaPratosUpdate) {
-      await pratosService.all().then((p) => {
+      await pratoService.findByRestaurante(route.params.restaurante_codigo).then((p) => {
         setListaPratos(p.pratos)
       })
+      .catch((error)=>{})
+      .then(()=>{setListaPratosUpdate(false)})
     }
   }
 
   useEffect(() => {
     loadDados()
   }, [listaPratosUpdate])
+  
   return (
     <View style={styleGlobal.view}>
 
@@ -48,6 +52,13 @@ export default function PratosScreen({ route, navigation }) {
         data={listaPratos}
         keyExtractor={item => item.prato_codigo.toString()}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl 
+            refreshing={listaPratosUpdate} 
+            onRefresh={()=>{setListaPratosUpdate(true)}}
+            progressBackgroundColor={colors.primary}
+          />
+        }
         renderItem={({ item }) =>
           <ItemListPratos
             nome={item.prato_nome}

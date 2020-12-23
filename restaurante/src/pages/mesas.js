@@ -3,7 +3,8 @@ import {
   View,
   Text,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  RefreshControl
 } from 'react-native'
 
 //STYLES
@@ -12,6 +13,7 @@ import styleGlobal from '../styles/styleGlobal'
 //COMPONENTES
 import PageName from '../components/PageName'
 import ItemListMesas from '../components/ItemListMesas'
+import colors from '../styles/colors/colors'
 
 //SERVICE
 import mesaService from '../services/mesaService'
@@ -28,6 +30,8 @@ export default function MesaScreen({ route, navigation }) {
       await mesaService.all().then((m) => {
         setListaMesas(m.mesas)
       })
+      .catch((error)=>{})
+      .then(()=>{setListaMesasUpdate(false)})
     }
   }
 
@@ -48,6 +52,13 @@ export default function MesaScreen({ route, navigation }) {
         data={listaMesas}
         keyExtractor={item => item.mesa_codigo.toString()}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl 
+            refreshing={listaMesasUpdate} 
+            onRefresh={()=>{setListaMesasUpdate(true)}}
+            progressBackgroundColor={colors.primary}
+          />
+        }
         renderItem={({ item }) =>
           <ItemListMesas 
           hora={dateFormat.getHoraMin(item.mesa_data_hora)}
