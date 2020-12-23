@@ -21,9 +21,6 @@ function ItemListReservas(props) {
             <View style={style.viewHora}>
                 <View style={style.viewTopo}>
                     <Text style={style.data_hora}>15:00</Text>
-                    <TouchableOpacity>
-                        <MaterialIcons style={style.iconDelete} name="delete" size={35} color={colors.primary} />
-                    </TouchableOpacity>
                 </View>
                 <Text style={style.nome}>Fulano da silva teste de moreira</Text>
                 <View style={style.viewDetalhes}>

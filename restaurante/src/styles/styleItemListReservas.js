@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
         borderColor:colors.primary,
         top: 10,
         flexDirection:'row',
+        marginVertical:10
 
     },
     viewData:{
