@@ -5,7 +5,6 @@ module.exports = {
     },
     async create(clienteModel) {
         const requisicao = require('./requisicaoService')
-        console.log(clienteModel,"foi")
         return requisicao.post('/cliente/create/',{
          'cliente_nome': clienteModel.cliente_nome,
          'cliente_email':clienteModel.cliente_email,
