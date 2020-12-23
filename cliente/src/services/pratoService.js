@@ -10,6 +10,18 @@ module.exports = {
                 return error
             })
     },
+    async findByRestaurante(restaurante_codigo) {
+        const requisicao = require('./requisicaoService')
+        return requisicao.post('/prato/findByRestaurante/', {
+            "restaurante_codigo": restaurante_codigo
+        })
+            .then(function (response) {
+                return response.data
+            })
+            .catch(function (error) {
+                return error
+            })
+    },
 
 
 }

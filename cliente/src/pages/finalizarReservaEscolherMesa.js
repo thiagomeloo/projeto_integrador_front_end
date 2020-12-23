@@ -4,7 +4,8 @@ import {
   Text,
   FlatList,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  RefreshControl,
 } from 'react-native'
 
 //ICONS
@@ -36,17 +37,18 @@ export default function RestauranteScreen({ route, navigation }) {
 
   const [listaMesa, setListaMesa] = useState([])
   const [listaMesaUpdate, setListaMesaUpdate] = useState(true)
-  
 
 
-  async function loadDados(){
-    
+
+  async function loadDados() {
     if (listaMesaUpdate) {
-    
-      await mesaService.all().then((r) => {
-         
-        setListaMesa(r.mesas)
-      })
+      await mesaService.findByRestauranteDisponivelFilterQtdPessoa(params.restaurante_codigo,qtdPessoa)
+        .then((r) => {
+          setListaMesa(r.mesas)
+        })
+        .catch((error) => { })
+        .then(() => { setListaMesaUpdate(false) })
+
     }
   }
 
@@ -54,7 +56,16 @@ export default function RestauranteScreen({ route, navigation }) {
     loadDados()
   }, [listaMesaUpdate])
 
-
+  async function downQtdPessoa() {
+    if (qtdPessoa > 0) {
+      setQtdPessoa(qtdPessoa - 1)
+    }
+    setListaMesaUpdate(true)
+  }
+  async function upQtdPessoa() {
+    setQtdPessoa(qtdPessoa + 1)
+    setListaMesaUpdate(true)
+  }
 
 
   return (
@@ -67,35 +78,42 @@ export default function RestauranteScreen({ route, navigation }) {
         <Text style={styleEscolherMesa.txt}>NÚMERO MÁXIMO DE PESSOAS</Text>
         <Text style={styleEscolherMesa.descricao}>(COM MAIS DE 4 ANOS)</Text>
         <View style={{ flexDirection: 'row-reverse', alignSelf: 'center' }}>
-          <TouchableOpacity zIndex={0} onPress={() => setQtdPessoa(qtdPessoa + 1)}>
+          <TouchableOpacity zIndex={0} onPress={() => upQtdPessoa()}>
             <Octicons name="diff-added" size={35} color={colors.primary} />
           </TouchableOpacity>
           <Text style={styleEscolherMesa.quant}>{qtdPessoa} {<FontAwesome name="user" size={30} color={colors.primary} />}</Text>
 
-          <TouchableOpacity zIndex={-1} onPress={() => qtdPessoa > 0 ? setQtdPessoa(qtdPessoa - 1) : false} >
+          <TouchableOpacity zIndex={-1} onPress={() => downQtdPessoa()} >
             <Octicons name="diff-removed" size={35} color={colors.primary} />
           </TouchableOpacity>
         </View>
       </View>
-      
+
       <FlatList
         style={[styleGlobal.list]}
         data={listaMesa}
         keyExtractor={item => { return item.mesa_codigo + '' }}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={listaMesaUpdate}
+            onRefresh={() => { setListaMesaUpdate(true) }}
+            progressBackgroundColor={colors.primary}
+          />
+        }
         renderItem={({ item }) =>
           <ItemListReservasMesa
-          key={item.mesa_codigo}
-          hora={dateFormat.getHoraMin(item.mesa_data_hora)}
-          mes={dateFormat.getMont(item.mesa_data_hora)}
-          dia={dateFormat.getDayDateNoBrString(item.mesa_data_hora)}
-          quant={item.mesa_quant_mesas}
-          func={()=> {navigation.navigate('escolherPrato')}}
+            key={item.mesa_codigo}
+            hora={dateFormat.getHoraMin(item.mesa_data_hora)}
+            mes={dateFormat.getMont(item.mesa_data_hora)}
+            dia={dateFormat.getDayDateNoBrString(item.mesa_data_hora)}
+            quant={item.mesa_quant_mesas}
+            func={() => { navigation.navigate('escolherPrato', item) }}
           />
         }
       />
 
-      
+
 
     </View>
   )

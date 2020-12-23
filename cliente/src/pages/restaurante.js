@@ -3,12 +3,14 @@ import {
   View,
   Text,
   FlatList,
-  Image
+  Image,
+  RefreshControl,
 } from 'react-native'
 
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
 import styleRestaurante from '../styles/styleRestaurante'
+import colors from '../styles/colors/colors'
 
 
 //COMPONENTES
@@ -25,12 +27,14 @@ export default function RestauranteScreen({ navigation }) {
 
 
 
-  async function loadDados(){
-   
+  async function loadDados() {
+
     if (listaRestauranteUpdate) {
       await restauranteService.all().then((r) => {
         setListaRestaurante(r.restaurantes)
       })
+      .catch((error)=>{})
+      .then(()=>{setListaRestauranteUpdate(false)})
     }
   }
 
@@ -42,7 +46,7 @@ export default function RestauranteScreen({ navigation }) {
 
   function openReservas(restaurante) {
     //console.log(item)
-    navigation.navigate('escolherMesa',restaurante)
+    navigation.navigate('escolherMesa', restaurante)
   }
 
 
@@ -52,17 +56,24 @@ export default function RestauranteScreen({ navigation }) {
       <FlatList
         style={[styleGlobal.list]}
         data={listaRestaurante}
-        keyExtractor={item => {return item.restaurante_codigo + ''}}
+        keyExtractor={item => { return item.restaurante_codigo + '' }}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl 
+            refreshing={listaRestauranteUpdate} 
+            onRefresh={()=>{setListaRestauranteUpdate(true)}}
+            progressBackgroundColor={colors.primary}
+          />
+        }
         renderItem={({ item }) =>
-        <ItemListRestaurante  key={item.restaurante_codigo}
+        <ItemListRestaurante key={item.restaurante_codigo}
           nome={item.restaurante_fantasia}
           descricao={item.restaurante_descricao}
           star={3}
-          func={()=>{openReservas(item)}}
+          func={() => { openReservas(item) }}
         />
-         
-        }
+
+      }
       />
 
 

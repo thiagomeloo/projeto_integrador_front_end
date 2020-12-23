@@ -4,7 +4,8 @@ import {
   Text,
   FlatList,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  RefreshControl,
 } from 'react-native'
 
 //STYLES
@@ -39,11 +40,12 @@ export default function EscolherPratoScreen({ route, navigation }) {
 
   async function loadDados() {
     if (listaPratoUpdate) {
-
-      await pratoService.all().then((r) => {
-
+      await pratoService.findByRestaurante(params.mesa_restaurante_codigo)
+      .then((r) => {
         setListaPratos(r.pratos)
       })
+      .catch((error)=>{})
+      .then(()=>{setListaPratoUpdate(false)})
     }
   }
 
@@ -65,7 +67,7 @@ export default function EscolherPratoScreen({ route, navigation }) {
     <View style={styleEscolherMesa.container}>
 
       <PageName name='ESCOLHER PRATO' />
-      <Text onPress={()=> console.log(listaPratoEscolhido)} style={styleEscolherMesa.txt}>FILTRAR:</Text>
+      <Text style={styleEscolherMesa.txt}>FILTRAR:</Text>
       <DropDownPicker
         items={[
           { label: 'SELECIONE...', color: 'red', value: 'selecione', hidden: true },
@@ -88,6 +90,13 @@ export default function EscolherPratoScreen({ route, navigation }) {
         data={listaPratos}
         keyExtractor={item => { return item.prato_codigo + '' }}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl 
+            refreshing={listaPratoUpdate} 
+            onRefresh={()=>{setListaPratoUpdate(true)}}
+            progressBackgroundColor={colors.primary}
+          />
+        }
         renderItem={({ item }) =>
           <ItemListPrato
             nome={item.prato_nome}
