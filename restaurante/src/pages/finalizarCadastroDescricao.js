@@ -22,7 +22,8 @@ export default function inicialScreen({ route, navigation }) {
         route.params.restaurante_descricao = descricao 
         restauranteService.create(route)
         .then(result =>{
-            route.params.restaurante_codigo = result.data.restaurante_codigo
+            let restaurante = route.params 
+            restaurante.restaurante_codigo = result.data.restaurante_codigo
         })
         navigation.navigate('main',route.params)
          

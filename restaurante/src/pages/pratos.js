@@ -28,7 +28,8 @@ export default function PratosScreen({ route, navigation }) {
   async function loadDados() {
     
     if (listaPratosUpdate) {
-      await pratoService.findByRestaurante(route.params.restaurante_codigo).then((p) => {
+      await pratoService.findByRestaurante(1)
+      .then((p) => {
         setListaPratos(p.pratos)
       })
       .catch((error)=>{})
