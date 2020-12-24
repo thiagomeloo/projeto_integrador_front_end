@@ -22,7 +22,7 @@ module.exports = {
         }).then((r) => {
             //r.data.reserva_codigo
             for (let i = 0; i < reservaModel.reserva_pratos.length; i++) {
-                
+                //AQUI TENTAR CADASTRAR AS RESERVAS PRATOS
                 requisicao.post('/reservaHasPratos/create/', {
                     "reserva_has_prato_quant_prato": 1,
                     "reserva_has_prato_reserva_codigo": 1,
