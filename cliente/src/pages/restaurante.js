@@ -20,11 +20,12 @@ import PageName from '../components/PageName'
 //SERVICES
 import restauranteService from '../services/restauranteService'
 
-export default function RestauranteScreen({ navigation }) {
+export default function RestauranteScreen({route, navigation }) {
 
   const [listaRestaurante, setListaRestaurante] = useState([])
   const [listaRestauranteUpdate, setListaRestauranteUpdate] = useState(true)
 
+  const cliente = route.params
 
 
   async function loadDados() {
@@ -46,7 +47,7 @@ export default function RestauranteScreen({ navigation }) {
 
   function openReservas(restaurante) {
     //console.log(item)
-    navigation.navigate('escolherMesa', restaurante)
+    navigation.navigate('escolherMesa',{restaurante,cliente})
   }
 
 

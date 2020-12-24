@@ -83,6 +83,30 @@ const styles = StyleSheet.create({
         color:colors.primary,
         marginHorizontal:10,
     },
+    txtItensReservaTitle:{
+        fontSize:16,
+        alignSelf:'center',
+        fontWeight: 'bold',
+        textTransform:'uppercase',
+        paddingVertical:15,
+        color:colors.secondary,
+    },
+    txtItensReservaItem:{
+        fontSize:14,
+        alignSelf:'center',
+        fontWeight: 'bold',
+        textTransform:'uppercase',
+        paddingVertical:2,
+        color:colors.primary,
+    },
+    txtItensReservaItemValor:{
+        fontSize:14,
+        alignSelf:'center',
+        fontWeight: 'bold',
+        textTransform:'uppercase',
+        paddingVertical:2,
+        color:colors.secondary,
+    },
 
     
 })

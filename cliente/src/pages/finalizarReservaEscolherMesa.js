@@ -34,15 +34,17 @@ export default function RestauranteScreen({ route, navigation }) {
   const [qtdPessoa, setQtdPessoa] = useState(0)
 
   const params = route.params
+  const restaurante = params.restaurante
+  const cliente = params.cliente
+
 
   const [listaMesa, setListaMesa] = useState([])
   const [listaMesaUpdate, setListaMesaUpdate] = useState(true)
 
-
-
   async function loadDados() {
+    
     if (listaMesaUpdate) {
-      await mesaService.findByRestauranteDisponivelFilterQtdPessoa(params.restaurante_codigo,qtdPessoa)
+      await mesaService.findByRestauranteDisponivelFilterQtdPessoa(restaurante.restaurante_codigo,qtdPessoa)
         .then((r) => {
           setListaMesa(r.mesas)
         })
@@ -108,7 +110,7 @@ export default function RestauranteScreen({ route, navigation }) {
             mes={dateFormat.getMont(item.mesa_data_hora)}
             dia={dateFormat.getDayDateNoBrString(item.mesa_data_hora)}
             quant={item.mesa_quant_mesas}
-            func={() => { navigation.navigate('escolherPrato', item) }}
+            func={() => { navigation.navigate('escolherPrato',{restaurante,cliente,item}) }}
           />
         }
       />

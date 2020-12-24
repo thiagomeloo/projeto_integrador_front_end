@@ -29,6 +29,10 @@ export default function EscolherPratoScreen({ route, navigation }) {
   const [qtdPessoa, setQtdPessoa] = useState(0)
 
   const params = route.params
+  const cliente = params.cliente
+  const mesa = params.item
+  const restaurante = params.restaurante
+
 
   const [listaPratos, setListaPratos] = useState([])
   const [listaPratoEscolhido, setListaPratoEscolhido] = useState([])
@@ -37,10 +41,10 @@ export default function EscolherPratoScreen({ route, navigation }) {
   const [filtro, setFiltro] = useState('selecione')
 
 
-
   async function loadDados() {
     if (listaPratoUpdate) {
-      await pratoService.findByRestaurante(params.mesa_restaurante_codigo)
+      
+      await pratoService.findByRestaurante(mesa.mesa_restaurante_codigo)
       .then((r) => {
         setListaPratos(r.pratos)
       })
@@ -67,23 +71,6 @@ export default function EscolherPratoScreen({ route, navigation }) {
     <View style={styleEscolherMesa.container}>
 
       <PageName name='ESCOLHER PRATO' />
-      <Text style={styleEscolherMesa.txt}>FILTRAR:</Text>
-      <DropDownPicker
-        items={[
-          { label: 'SELECIONE...', color: 'red', value: 'selecione', hidden: true },
-          { label: 'ENTRADA', value: 'entrada' },
-          { label: 'PRINCIPAL', value: 'principal' },
-          { label: 'SOBREMESA', value: 'sobremesa' }
-        ]}
-        defaultValue={filtro}
-        style={[styleEditPerfil.dropdown]}
-        labelStyle={styleEditPerfil.dropdown_label}
-        containerStyle={[styleEditPerfil.dropdown_Container, { marginHorizontal: 40 }]}
-        itemStyle={styleEditPerfil.dropdown_item}
-        dropDownStyle={styleEditPerfil.dropdown_style}
-        onChangeItem={item => setFiltro(item.value)}
-        zIndex={3}
-      />
 
       <FlatList
         style={[styleGlobal.list,{marginBottom:15}]}
@@ -114,9 +101,9 @@ export default function EscolherPratoScreen({ route, navigation }) {
       />
           <TouchableOpacity
           style={styleGlobal.button}
-          onPress={() => {}}
+          onPress={() => {navigation.navigate('detalhesReserva',{cliente,restaurante,mesa,pratos:listaPratoEscolhido})}}
           >
-          <Text style={styleGlobal.button}>FINALIZAR</Text>
+          <Text style={styleGlobal.button}>Prosseguir</Text>
           </TouchableOpacity> 
     </View>
   )
