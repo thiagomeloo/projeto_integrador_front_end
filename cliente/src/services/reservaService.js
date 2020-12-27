@@ -25,13 +25,15 @@ module.exports = {
                 //AQUI TENTAR CADASTRAR AS RESERVAS PRATOS
                 requisicao.post('/reservaHasPratos/create/', {
                     "reserva_has_prato_quant_prato": 1,
-                    "reserva_has_prato_reserva_codigo": 1,
-                    "reserva_has_prato_prato_codigo": 1
-                }).then((x)=>{console.log(x)})
-                .catch((error)=>{console.log(error)})
+                    "reserva_has_prato_reserva_codigo":r.data.reserva_codigo ,
+                    "reserva_has_prato_prato_codigo": reservaModel.reserva_pratos[i].prato_codigo
+                })
+                .then((x) => { 
+                    //console.log(x)
+                })
+                .catch((error) => {})
             }
-
-        })
+        }).catch((error) => { })
     },
 
 

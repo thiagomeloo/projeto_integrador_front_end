@@ -5,7 +5,8 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native'
 
 //STYLES
@@ -55,10 +56,18 @@ export default function DetalhesReservaScreen({ route, navigation }) {
   async function finalizarReserva() {
     let reservaModelo = new reservaModel(cliente.cliente_codigo,
       mesa.mesa_codigo,restaurante.restaurante_codigo,
-      null,mesa.mesa_quant_pessoas,pratos)
+      mesa.mesa_data_hora,mesa.mesa_quant_pessoas,pratos)
       reservaService.reservaAndPratos(reservaModelo)
       .then(result => {
-        console.log('INSERIU')
+        Alert.alert(
+          "Sucesso!",
+          "Reserva efetuada com sucesso!",
+          [
+            { text: "OK", onPress: () => navigation.navigate('main') }
+          ],
+          { cancelable: false }
+        )
+        //navigation.navigate('main')
       })
 
   }
