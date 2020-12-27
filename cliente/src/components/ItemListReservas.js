@@ -43,7 +43,7 @@ function ItemListReservas(props) {
                     </View>
                 </View>
                 <TouchableOpacity>
-                    <Text style={style.txtMostrarMais}>{'Mostrar Mais >>'}</Text>
+                    <Text onPress={props.nav} style={style.txtMostrarMais}>{'Mostrar Mais >>'}</Text>
                 </TouchableOpacity>
             </View>
         </View>

@@ -76,6 +76,7 @@ export default function ReservasScreen({route, navigation }) {
             prato={item.reserva_qtd_pessoas}
             restaurante={item.reserva_restaurante}
             funcRemove={() => console.log('remover')}
+            nav={()=> navigation.navigate('reservaMaisDetalhes',item)}
           >
           </ItemListReserva>
         }

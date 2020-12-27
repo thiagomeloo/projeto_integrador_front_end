@@ -11,6 +11,7 @@ import editPerfil from './src/pages/editPerfil'
 import escolherMesa from './src/pages/finalizarReservaEscolherMesa'
 import escolherPrato from './src/pages/finalizarReservaEscolherPrato'
 import detalhesReserva from './src/pages/finalizarReservaDetalhes'
+import reservaMaisDetalhes from './src/pages/reservaMaisDetalhes'
 
 
 
@@ -29,7 +30,7 @@ export default function App() {
         <Stack.Screen name="escolherMesa"  component={escolherMesa} />
         <Stack.Screen name="escolherPrato"  component={escolherPrato} />
         <Stack.Screen name="detalhesReserva"  component={detalhesReserva} />
-
+        <Stack.Screen name="reservaMaisDetalhes"  component={reservaMaisDetalhes} />
 
       </Stack.Navigator>
     </NavigationContainer>
