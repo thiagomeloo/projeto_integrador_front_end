@@ -24,7 +24,7 @@ import dateFormat from '../util/dateFormat'
 
 export default function ReservasScreen({route, navigation }) {
   
-
+ 
   const [listaReservas, setListaReservas] = useState([])
   const [listaReservaUpdate, setListaReservaUpdate] = useState(true)
 

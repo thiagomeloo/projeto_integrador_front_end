@@ -19,7 +19,20 @@ module.exports = {
         })
 
     },
+    async findByReserva(reservaCodigo) {
+        const requisicao = require('./requisicaoService')
+        return requisicao.post('/reservaHasPratos/findByReserva', {
+            "reserva_codigo": reservaCodigo
+        })
+            .then(function (response) {
+                return response.data
+            })
+            .catch(function (error) {
+                return error
+            })
 
+        
+    },
 
 
 }
