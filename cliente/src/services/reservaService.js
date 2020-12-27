@@ -10,6 +10,18 @@ module.exports = {
                 return error
             })
     },
+    async findByCliente(cliente_codigo) {
+        const requisicao = require('./requisicaoService')
+        return requisicao.post('/reserva/findByCliente/', {
+            "cliente_codigo": cliente_codigo
+        })
+            .then(function (response) {
+                return response.data
+            })
+            .catch(function (error) {
+                return error
+            })
+    },
     async reservaAndPratos(reservaModel) {
         const requisicao = require('./requisicaoService')
         let reservaCadastrada = reservaModel

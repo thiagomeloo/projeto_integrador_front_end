@@ -30,16 +30,17 @@ export default function inicialScreen({ route, navigation }) {
   const [valorSexo, setValorSexo] = useState('selecione')
   const [valorRegiao, setValorRegiao] = useState('selecione') //constante para o piker de região
 
-  function finalizar() {
+  async function finalizar() {
     let cliente = new ClienteModel(nomeCompleto,
       email, cpf, telefone, valorSexo,
       valorRegiao)
 
-    clienteService.create(cliente)
+     await clienteService.create(cliente)
       .then(result => {
+       // console.log(result)
         cliente.cliente_codigo = result.data.cliente_codigo
       })
-
+      //console.log(cliente)
     navigation.navigate('main', cliente)
 
   }

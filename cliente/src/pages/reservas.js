@@ -2,12 +2,15 @@ import React,{useState, useEffect} from 'react'
 import {
   View,
   FlatList,
+  RefreshControl,
   Button
 } from 'react-native'
 
 //STYLES
 import styleGlobal from '../styles/styleGlobal'
 import styleReservas from '../styles/styleReservas'
+import colors from '../styles/colors/colors'
+
 
 //COMPONENTES
 import PageName from '../components/PageName'
@@ -19,7 +22,7 @@ import reservaService from '../services/reservaService'
 //UTIL
 import dateFormat from '../util/dateFormat'
 
-export default function ReservasScreen({ navigation }) {
+export default function ReservasScreen({route, navigation }) {
   
 
   const [listaReservas, setListaReservas] = useState([])
@@ -29,9 +32,13 @@ export default function ReservasScreen({ navigation }) {
   async function loadDados(){
    
     if (listaReservaUpdate) {
-      await reservaService.all().then((r) => {
+      await reservaService.findByCliente(route.params.cliente_codigo)
+      .then((r) => {
         setListaReservas(r.reservas)
       })
+      .catch((error) => { })
+      .then(() => { setListaReservaUpdate(false) })
+
     }
   }
 
@@ -39,7 +46,7 @@ export default function ReservasScreen({ navigation }) {
     loadDados()
   }, [listaReservaUpdate])
 
-  
+  //console.log(listaReservas)
   return (
     <View style={[styleReservas.container]}>
 
@@ -49,6 +56,13 @@ export default function ReservasScreen({ navigation }) {
         data={listaReservas}
         keyExtractor={item => item.reserva_codigo + ''}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={listaReservaUpdate}
+            onRefresh={() => { setListaReservaUpdate(true) }}
+            progressBackgroundColor={colors.primary}
+          />
+        }
         renderItem={({ item }) =>
           <ItemListReserva
             key={item.reserva_codigo}
@@ -59,7 +73,7 @@ export default function ReservasScreen({ navigation }) {
             cliente={item.reserva_cliente}
             mesa={item.reserva_mesa}
             pessoa={item.reserva_qtd_pessoas}
-            prato="3"
+            prato={item.reserva_qtd_pessoas}
             restaurante={item.reserva_restaurante}
             funcRemove={() => console.log('remover')}
           >
