@@ -27,6 +27,7 @@ import reservaService from '../services/reservaService'
 import reservaHasPratosService from '../services/reservaHasPratosService'
 import restauranteService from '../services/restauranteService'
 import pratoService from '../services/pratoService'
+import { set } from 'react-native-reanimated'
 
 
 export default function reservaMaisDetalhes({ route, navigation }) {
@@ -37,31 +38,38 @@ export default function reservaMaisDetalhes({ route, navigation }) {
     const [restaurante, setRestaurante] = useState({})
     const [restauranteUpdate, setRestauranteUpdate] = useState(true)
 
-    const [prato, setPrato] = useState({})
-    const [pratoUpdate, setPrtoUpdate] = useState(true)
+    const [pratoRender, setPratoRender] = useState(true)
+
+    const [pratos, setPratos] = useState([])
+
+    const [valorReserva, setValorReserva] = useState(0)
+
 
 
     const reserva = route.params
-    let itensRender = []
-    let valorReserva = 0
 
 
     async function loadDados() {
         if (restauranteUpdate) {
-            await restauranteService.findByCodigo(reserva.reserva_restaurante_codigo).then((r) => {
-                setRestaurante(r.restaurante)
-            })
+            await restauranteService.findByCodigo(reserva.reserva_restaurante_codigo)
+                .then((r) => {
+                    setRestaurante(r.restaurante)
+                })
                 .catch((error) => { })
                 .then(() => { setRestauranteUpdate(false) })
         }
 
         if (listaPratosReservaUpdate) {
-            await reservaHasPratosService.findByReserva(reserva.reserva_codigo).then((r) => {
-                setListaPratosReserva(r.reservasHasPratos)
-
-            })
+            await reservaHasPratosService.findByReserva(reserva.reserva_codigo)
+                .then((r) => {
+                    setPratos(r.reservasHasPratos)
+                })
                 .catch((error) => { })
-                .then(() => { setListaPratosReservaUpdate(false) })
+                .then(() => {
+                    setListaPratosReservaUpdate(false)
+
+                })
+
         }
     }
 
@@ -70,6 +78,26 @@ export default function reservaMaisDetalhes({ route, navigation }) {
     }, [listaPratosReservaUpdate])
 
 
+    useEffect(() => {
+        let valor = 0
+        let itensRender = []
+
+        pratos.forEach(element => {
+            valor = valor + element.prato_preco
+            itensRender.push(
+                <Text
+                    key={element.reserva_has_prato_codigo}
+                    style={styleDetalhesReserva.txtItensReservaItem}>
+                    {element.prato_nome + ' - '}
+                    <Text style={styleDetalhesReserva.txtItensReservaItemValor}>
+                        {element.prato_preco + ' R$'}
+                    </Text>
+                </Text>)
+            setValorReserva(valor)
+            setPratoRender(itensRender)
+        })
+
+    }, [pratos])
 
 
     return (
@@ -78,7 +106,7 @@ export default function reservaMaisDetalhes({ route, navigation }) {
             <View style={styleDetalhesReserva.box}>
                 <Text style={styleDetalhesReserva.restauranteTitle}>{restaurante.restaurante_fantasia}</Text>
                 <View style={styleDetalhesReserva.boxBody}>
-                    <Text style={styleDetalhesReserva.txtNumPessoas}>NÚMERO DE PESSOAS</Text>
+                    <Text style={styleDetalhesReserva.txtNumPessoas} onPress={() => { console.log(pratos) }}>NÚMERO DE PESSOAS</Text>
 
                     <View style={styleDetalhesReserva.boxNumPessoa}>
                         <Text style={styleDetalhesReserva.txtNumPessoasValue}>{reserva.reserva_qtd_pessoas}</Text>
@@ -88,13 +116,13 @@ export default function reservaMaisDetalhes({ route, navigation }) {
                 <View style={styleDetalhesReserva.boxBody}>
                     <View style={styleDetalhesReserva.boxValorReserva}>
                         <Text style={styleDetalhesReserva.txtValorReserva}>VALOR DA RESERVA</Text>
-                        <Text style={styleDetalhesReserva.txtValorReservaValue}>4</Text>
+                        <Text style={styleDetalhesReserva.txtValorReservaValue}>{valorReserva + ' R$'}</Text>
                     </View>
                 </View>
                 <View style={[styleDetalhesReserva.boxBody, { flex: 1 }]}>
                     <Text style={styleDetalhesReserva.txtItensReservaTitle}>PRATOS DA RESERVA</Text>
                     <ScrollView style={[{ maxHeight: '80%' }]}>
-                        <Text>nada</Text>
+                        {pratoRender}
                     </ScrollView>
 
                 </View>
