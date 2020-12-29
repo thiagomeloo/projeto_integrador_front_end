@@ -13,6 +13,7 @@ import editPratos from './src/pages/editPratos'
 import cadastrarMesas from './src/pages/cadastrarMesas'
 import editMesas from './src/pages/editMesas'
 import finalizarCadastroDescricao from './src/pages/finalizarCadastroDescricao'
+import reservaMaisDetalhes from './src/pages/reservaMaisDetalhes'
 
 //NAVIGATIONS
 const Stack = createStackNavigator()
@@ -31,6 +32,7 @@ export default function App() {
         <Stack.Screen name="cadastrarMesas"  component={cadastrarMesas} />
         <Stack.Screen name="editMesas"  component={editMesas} />
         <Stack.Screen name="finalizarCadastroDescricao"  component={finalizarCadastroDescricao} />
+        <Stack.Screen name="reservaMaisDetalhes"  component={reservaMaisDetalhes} />
       </Stack.Navigator>
     </NavigationContainer>
   )

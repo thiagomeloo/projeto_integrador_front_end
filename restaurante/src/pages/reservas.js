@@ -11,6 +11,7 @@ import styleGlobal from '../styles/styleGlobal'
 import colors from '../styles/colors/colors'
 
 
+import dateFormat from '../util/dateFormat'
 
 //COMPONENTES
 import PageName from '../components/PageName'
@@ -18,21 +19,27 @@ import ItemListReserva from '../components/ItemListReservas'
 
 import reservaService from '../services/reservaService'
 
+
 export default function ReservasScreen({route, navigation }) {
   
   const [listaReserva, setListaReserva] = useState([])
   const [listaReservaUpdate, setListaReservaUpdate] = useState(true)
 
+
   async function loadDados() {
     
     if (listaReservaUpdate) {
-      await reservaService.findByRestaurante(route.params.restaurante_codigo).then((r) => {
+      await reservaService.findByRestaurante(route.params.restaurante_codigo)
+      .then((r) => {
         setListaReserva(r.reservas)
       })
       .catch((error)=>{})
       .then(()=>{setListaReservaUpdate(false)})
     }
+
+
   }
+
 
   useEffect(() => {
     loadDados()
@@ -56,12 +63,16 @@ export default function ReservasScreen({route, navigation }) {
           />
         }
         renderItem={({ item }) =>
+          
           <ItemListReserva
-            data={item.reserva_data}
-            cliente={item.reserva_cliente}
-            mesa={item.reserva_mesa}
-            restaurante={item.reserva_restaurante}
-            funcRemove={() => console.log('remover')}
+          key={item.reserva_codigo}
+          mes={dateFormat.getMont(item.reserva_data)}
+          dia={dateFormat.getDayDateNoBrString(item.reserva_data)}
+          hora={dateFormat.getHoraMin(item.reserva_data)}
+          nomePessoa={item.cliente_nome}
+          qtdPessoa={item.reserva_qtd_pessoas}
+          reserva_codigo={item.reserva_codigo}
+          nav={()=> navigation.navigate('reservaMaisDetalhes',item)}
           >
           </ItemListReserva>
         }
