@@ -18,10 +18,17 @@ import mesasPage from './mesas'
 
 //STYLES - COLORS
 import colors from '../styles/colors/colors'
+import restauranteService from '../services/restauranteService'
 
 
 export default function mainScreen({route, navigation }) {
-  //console.log(route)
+  
+  if(route.params.restaurante_codigo == null){
+    restauranteService.findByEmail(route.params.email)
+    .then(r=>{
+      route.params = r
+    })
+  }
   
   return (
     <Tab.Navigator

@@ -20,12 +20,13 @@ export default function inicialScreen({ route, navigation }) {
 
     function finalizar(){
         route.params.restaurante_descricao = descricao 
+        let restaurante = route.params 
         restauranteService.create(route)
         .then(result =>{
-            let restaurante = route.params 
+            console.log(route.params)
             restaurante.restaurante_codigo = result.data.restaurante_codigo
         })
-        navigation.navigate('main',route.params)
+        navigation.navigate('main',restaurante)
          
           
       }
