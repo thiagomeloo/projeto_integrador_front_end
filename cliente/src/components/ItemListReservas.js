@@ -1,15 +1,27 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 
 import { MaterialIcons } from '@expo/vector-icons'
 import { FontAwesome } from '@expo/vector-icons'
 
+import reservaHasPratosService from '../services/reservaHasPratosService'
 
 //STYLES 
 import style from '../styles/styleItemListReservas'
 import colors from '../styles/colors/colors'
 
 function ItemListReservas(props) {
+
+    const [qtdPratos, setQtdPratos] = useState(0)
+
+    function getCountPratos(reserva_codigo) {
+        return reservaHasPratosService.findByReservaCountPratos(reserva_codigo)
+            .then(r => {
+                setQtdPratos(r.reservasHasPratos[0].qtd_pratos_reserva)
+            })
+    }
+
+    getCountPratos(props.reserva_codigo)
 
     return (
         <View style={style.container}>
@@ -30,14 +42,14 @@ function ItemListReservas(props) {
                     <View>
                         <Text style={style.txtPratos}>Pratos:</Text>
                         <View style={style.IconPratos}>
-                            <Text style={style.txtIcon}>{props.prato}</Text>
+                            <Text style={style.txtIcon}>{qtdPratos}</Text>
                             <MaterialIcons name="restaurant" size={30} color={colors.fontColorPrimary} />
                         </View>
                     </View>
                     <View>
                         <Text style={style.txtPratos}>Pessoas:</Text>
                         <View style={style.IconPratos}>
-                            <Text style={style.txtIcon}>{props.pessoa}</Text>
+                            <Text style={style.txtIcon}>{props.qtdPessoa}</Text>
                             <FontAwesome name="user" size={30} color={colors.fontColorPrimary} />
                         </View>
                     </View>

@@ -30,7 +30,8 @@ module.exports = {
             "reserva_cliente_codigo": reservaModel.reserva_cliente_codigo,
             "reserva_mesa_codigo": reservaModel.reserva_mesa_codigo,
             "reserva_restaurante_codigo": reservaModel.reserva_restaurante_codigo,
-            "reserva_qtd_pessoas": reservaModel.reserva_qtd_pessoas
+            "reserva_qtd_pessoas": reservaModel.reserva_qtd_pessoas,
+            "reserva_data": reservaModel.reserva_data
         }).then((r) => {
             //r.data.reserva_codigo
             for (let i = 0; i < reservaModel.reserva_pratos.length; i++) {

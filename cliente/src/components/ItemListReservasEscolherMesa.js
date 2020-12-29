@@ -1,9 +1,13 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 
+import { FontAwesome } from '@expo/vector-icons'
+
 
 //STYLES 
 import style from '../styles/styleItemListReservas'
+import colors from '../styles/colors/colors'
+
 
 function ItemListReservasEscolherMesa(props) {
 
@@ -17,13 +21,15 @@ function ItemListReservasEscolherMesa(props) {
             <View style={style.viewHora}>
                 <View style={style.viewTopo}>
                     <Text style={style.data_hora}>{props.hora}</Text>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         onPress={props.func}
-                    style={style.btnReservar}>
+                        style={style.btnReservar}>
                         <Text style={style.txtBtnReservar}>RESERVAR</Text>
                     </TouchableOpacity>
                 </View>
-                    <Text style={style.qtdMesasDisponiveis}>{props.quant} MESAS DISPONIVEIS</Text>
+                <Text style={style.qtdPessoasDisponiveis}>MESAS PARA ATÉ {props.quantPessoa} PESSOAS</Text>
+
+                <Text style={style.qtdMesasDisponiveis}>{props.quantMesa} MESAS DISPONIVEIS</Text>
             </View>
         </View>
 

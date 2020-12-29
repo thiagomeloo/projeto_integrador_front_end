@@ -40,7 +40,7 @@ export default function RestauranteScreen({ route, navigation }) {
 
   const [listaMesa, setListaMesa] = useState([])
   const [listaMesaUpdate, setListaMesaUpdate] = useState(true)
-
+  
   async function loadDados() {
     
     if (listaMesaUpdate) {
@@ -109,7 +109,8 @@ export default function RestauranteScreen({ route, navigation }) {
             hora={dateFormat.getHoraMin(item.mesa_data_hora)}
             mes={dateFormat.getMont(item.mesa_data_hora)}
             dia={dateFormat.getDayDateNoBrString(item.mesa_data_hora)}
-            quant={item.mesa_quant_mesas}
+            quantMesa={item.mesa_quant_mesas}
+            quantPessoa={item.mesa_quant_pessoas}
             func={() => { navigation.navigate('escolherPrato',{restaurante,cliente,item}) }}
           />
         }

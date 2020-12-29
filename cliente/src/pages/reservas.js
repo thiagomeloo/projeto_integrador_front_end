@@ -28,7 +28,6 @@ export default function ReservasScreen({route, navigation }) {
   const [listaReservas, setListaReservas] = useState([])
   const [listaReservaUpdate, setListaReservaUpdate] = useState(true)
 
-
   async function loadDados(){
    
     if (listaReservaUpdate) {
@@ -72,8 +71,9 @@ export default function ReservasScreen({route, navigation }) {
             data={item.reserva_data}
             cliente={item.reserva_cliente}
             mesa={item.reserva_mesa}
-            pessoa={item.reserva_qtd_pessoas}
-            prato={item.reserva_qtd_pessoas}
+            qtdPessoa={item.reserva_qtd_pessoas}
+            nome={item.cliente_nome}
+            reserva_codigo={item.reserva_codigo}
             restaurante={item.reserva_restaurante}
             funcRemove={() => console.log('remover')}
             nav={()=> navigation.navigate('reservaMaisDetalhes',item)}

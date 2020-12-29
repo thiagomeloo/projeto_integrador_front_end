@@ -116,16 +116,22 @@ const styles = StyleSheet.create({
         marginLeft:'5%',
     },
     qtdMesasDisponiveis:{
-        marginVertical:10,
+        marginVertical:5,
         color:colors.secondary,
         fontSize:18,
+        fontWeight:'bold',
+        textTransform:'uppercase',
+    },
+    qtdPessoasDisponiveis:{
+        marginVertical:4,
+        color:colors.secondary,
         fontWeight:'bold',
         textTransform:'uppercase',
     },
     btnReservar:{
         backgroundColor:colors.primary,
         borderRadius:15,
-        height:'35%',
+        height:'40%',
         marginHorizontal:'5%',
         paddingHorizontal:'15%'
     },
