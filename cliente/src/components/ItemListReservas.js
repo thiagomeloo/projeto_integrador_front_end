@@ -33,9 +33,9 @@ function ItemListReservas(props) {
             <View style={style.viewHora}>
                 <View style={style.viewTopo}>
                     <Text style={style.data_hora}>{props.hora}</Text>
-                    <TouchableOpacity>
+                    {/* <TouchableOpacity>
                         <MaterialIcons style={style.iconDelete}  name="delete" size={35} color={colors.primary} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <Text style={style.nome}>{props.nome}</Text>
                 <View style={style.viewDetalhes}>

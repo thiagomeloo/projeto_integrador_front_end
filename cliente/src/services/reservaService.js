@@ -25,7 +25,7 @@ module.exports = {
     async reservaAndPratos(reservaModel) {
         const requisicao = require('./requisicaoService')
         let reservaCadastrada = reservaModel
-        console.log(reservaModel)
+        //console.log(reservaModel)
         requisicao.post('/reserva/create/', {
             "reserva_cliente_codigo": reservaModel.reserva_cliente_codigo,
             "reserva_mesa_codigo": reservaModel.reserva_mesa_codigo,
