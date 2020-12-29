@@ -25,7 +25,7 @@ module.exports = {
     async reservaAndPratos(reservaModel) {
         const requisicao = require('./requisicaoService')
         let reservaCadastrada = reservaModel
-        //console.log(reservaModel)
+        console.log(reservaModel)
         requisicao.post('/reserva/create/', {
             "reserva_cliente_codigo": reservaModel.reserva_cliente_codigo,
             "reserva_mesa_codigo": reservaModel.reserva_mesa_codigo,
@@ -37,13 +37,18 @@ module.exports = {
                 //AQUI TENTAR CADASTRAR AS RESERVAS PRATOS
                 requisicao.post('/reservaHasPratos/create/', {
                     "reserva_has_prato_quant_prato": 1,
-                    "reserva_has_prato_reserva_codigo":r.data.reserva_codigo ,
+                    "reserva_has_prato_reserva_codigo": r.data.reserva_codigo,
                     "reserva_has_prato_prato_codigo": reservaModel.reserva_pratos[i].prato_codigo
                 })
-                .then((x) => { 
-                    //console.log(x)
-                })
-                .catch((error) => {})
+                    .then((x) => {
+                        requisicao.post('/mesa/update', {
+
+                            "mesa_codigo": reservaModel.reserva_mesa_codigo,
+                            "mesa_quant_mesas": (reservaModel.reserva_mesa_quant_mesas - 1)
+
+                        }).then((r)=>{console.log(r)})
+                    })
+                    .catch((error) => { })
             }
         }).catch((error) => { })
     },

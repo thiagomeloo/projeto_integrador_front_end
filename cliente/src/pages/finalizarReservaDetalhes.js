@@ -53,10 +53,11 @@ export default function DetalhesReservaScreen({ route, navigation }) {
     )
   }
 
+
   async function finalizarReserva() {
     let reservaModelo = new reservaModel(cliente.cliente_codigo,
       mesa.mesa_codigo,restaurante.restaurante_codigo,
-      mesa.mesa_data_hora,mesa.mesa_quant_pessoas,pratos)
+      mesa.mesa_data_hora,mesa.mesa_quant_mesas,mesa.mesa_quant_pessoas,pratos)
       reservaService.reservaAndPratos(reservaModelo)
       .then(result => {
         Alert.alert(
