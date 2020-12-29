@@ -28,7 +28,8 @@ export default function MesaScreen({ route, navigation }) {
 
   async function loadDados() {
     if (listaMesasUpdate) {
-      await mesaService.all().then((m) => {
+      await mesaService.findByRestaurante(route.params.restaurante_codigo)
+      .then((m) => {
         setListaMesas(m.mesas)
       })
       .catch((error)=>{})

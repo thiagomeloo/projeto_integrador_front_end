@@ -4,7 +4,8 @@ import {
   Text,
   TouchableOpacity,
   Image,
-  TextInput
+  TextInput,
+  Alert
 } from 'react-native'
 
 //STYLES
@@ -33,7 +34,15 @@ export default function inicialScreen({ route, navigation }) {
     let pratos = new pratoModel(nome, categoria, quant, preco,
       descricao, codigo, email)
     pratoService.create(pratos)
-    navigation.navigate('main')
+    Alert.alert(
+      "Sucesso!",
+      "Prato adicionado com sucesso!",
+      [
+        { text: "OK", onPress: () => navigation.navigate('main') }
+      ],
+      { cancelable: false }
+    )
+    
 
   }
   return (

@@ -27,9 +27,9 @@ export default function PratosScreen({ route, navigation }) {
   const [listaPratosUpdate, setListaPratosUpdate] = useState(true)
 
   async function loadDados() {
-    
+    console.log(route.params.restaurante_codigo)
     if (listaPratosUpdate) {
-      await pratoService.findByRestaurante(1)
+      await pratoService.findByRestaurante(route.params.restaurante_codigo)
       .then((p) => {
         setListaPratos(p.pratos)
       })
@@ -39,7 +39,6 @@ export default function PratosScreen({ route, navigation }) {
   }
 
   async function removePrato(prato){
-    console.log(prato)
 
     Alert.alert(
       "Ops!",
