@@ -22,12 +22,13 @@ import dateFormat from '../util/dateFormat'
 
 
 export default function MesaScreen({ route, navigation }) {
+  console.log(route.params,'MESAAA')
   const [listaMesas, setListaMesas] = useState([])
   const [listaMesasUpdate, setListaMesasUpdate] = useState(true)
 
   async function loadDados() {
     if (listaMesasUpdate) {
-      await mesaService.all().then((m) => {
+      await mesaService.findByRestauranteDisponivel(route.params.restaurante_codigo).then((m) => {
         setListaMesas(m.mesas)
       })
       .catch((error)=>{})

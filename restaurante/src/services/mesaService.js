@@ -53,6 +53,18 @@ module.exports = {
         }).catch(function (error) {
             return error
         })
-    }
+    },
+    async findByRestauranteDisponivel(restaurante_codigo) {
+        const requisicao = require('./requisicaoService')
+        return requisicao.post('/mesa/findByRestaurante/disponivel', {
+            "restaurante_codigo": restaurante_codigo
+        })
+            .then(function (response) {
+                return response.data
+            })
+            .catch(function (error) {
+                return error
+            })
+    },
 
 }
