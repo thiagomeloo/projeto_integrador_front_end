@@ -4,7 +4,8 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
-  RefreshControl
+  RefreshControl,
+  Alert
 } from 'react-native'
 
 //STYLES
@@ -35,6 +36,39 @@ export default function PratosScreen({ route, navigation }) {
       .catch((error)=>{})
       .then(()=>{setListaPratosUpdate(false)})
     }
+  }
+
+  async function removePrato(prato){
+    console.log(prato)
+
+    Alert.alert(
+      "Ops!",
+      "Tem certeza que deseja remover este prato?",
+      [
+        {
+          text: "NÃO",
+          onPress: () => {
+            return
+          },
+          style: "cancel"
+        },
+        { text: "SIM", onPress: () => {
+          
+          pratoService.delete(prato.prato_codigo)
+          Alert.alert(
+            "Sucesso!",
+            "Prato removido com sucesso!",
+            [
+              { text: "OK", onPress: () => setListaPratosUpdate(true) }
+            ],
+            { cancelable: false }
+          )
+
+        },style : "destructive"}
+      ],
+      { cancelable: false }
+    )
+    //navigation.navigate('pratos', prato)
   }
 
   useEffect(() => {

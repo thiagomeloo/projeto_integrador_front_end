@@ -60,6 +60,21 @@ module.exports = {
             return error
         })
     },
+    async delete(prato_codigo) {
+        const requisicao = require('./requisicaoService')
+        
+        return await requisicao.post('/prato/update',
+            {
+                'prato_codigo': prato_codigo,
+                'prato_status': 0,
+
+            }
+        ).then(function (response) {
+            return response.data
+        }).catch(function (error) {
+            return error
+        })
+    },
     async findByRestaurante(restaurante_codigo) {
         const requisicao = require('./requisicaoService')
         return requisicao.post('/prato/findByRestaurante/', {
