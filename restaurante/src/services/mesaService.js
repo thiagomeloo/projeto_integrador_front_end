@@ -54,6 +54,21 @@ module.exports = {
             return error
         })
     },
+    async delete(mesa_codigo) {
+        const requisicao = require('./requisicaoService')
+        
+        return await requisicao.post('/mesa/update',
+            {
+                'mesa_codigo': mesa_codigo,
+                'mesa_status': 0,
+
+            }
+        ).then(function (response) {
+            return response.data
+        }).catch(function (error) {
+            return error
+        })
+    },
     async findByRestaurante(restaurante_codigo) {
         const requisicao = require('./requisicaoService')
         return requisicao.post('/mesa/findByRestaurante/', {

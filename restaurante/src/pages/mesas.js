@@ -4,7 +4,8 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
-  RefreshControl
+  RefreshControl,
+  Alert,
 } from 'react-native'
 
 //STYLES
@@ -35,6 +36,37 @@ export default function MesaScreen({ route, navigation }) {
       .catch((error)=>{})
       .then(()=>{setListaMesasUpdate(false)})
     }
+  }
+
+  async function removeMesa(mesa){
+
+    Alert.alert(
+      "Ops!",
+      "Tem certeza que deseja remover esta mesa?",
+      [
+        {
+          text: "NÃO",
+          onPress: () => {
+            return
+          },
+          style: "cancel"
+        },
+        { text: "SIM", onPress: () => {
+          
+          mesaService.delete(mesa.mesa_codigo)
+          Alert.alert(
+            "Sucesso!",
+            "Mesa removida com sucesso!",
+            [
+              { text: "OK", onPress: () => setListaMesasUpdate(true) }
+            ],
+            { cancelable: false }
+          )
+
+        },style : "destructive"}
+      ],
+      { cancelable: false }
+    )
   }
 
   useEffect(() => {
@@ -68,7 +100,10 @@ export default function MesaScreen({ route, navigation }) {
           dia={dateFormat.getDayDateNoBrString(item.mesa_data_hora)}
           mesa={item.mesa_quant_mesas}
           pessoa={item.mesa_quant_pessoas}
-          funcEdit={() => navigation.navigate('editMesas',item)} />
+          funcEdit={() => navigation.navigate('editMesas',item)} 
+          funcDelete={() =>removeMesa(item) }
+          />
+          
         }
       />
 

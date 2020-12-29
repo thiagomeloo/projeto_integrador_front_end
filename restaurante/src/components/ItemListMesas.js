@@ -31,7 +31,7 @@ function ItemListMesas(props) {
                         <TouchableOpacity onPress={props.funcEdit}>
                             <MaterialIcons style={style.btnFun} name="edit" size={35} color={colors.primary} />
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={props.funcDelete}>
                             <MaterialIcons style={style.btnFun} name="delete" size={35} color={colors.primary} />
                         </TouchableOpacity>
                     </View>

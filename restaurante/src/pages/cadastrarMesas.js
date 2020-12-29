@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from 'react-native'
 
 
@@ -37,13 +38,20 @@ export default function inicialScreen({ route, navigation }) {
   const [qtdPessoa, setQtdPessoa] = useState(0)
   const [codigo, setCodigo] = useState(route.params.resturante_codigo)
   const [email, setEmail] = useState(route.params.restaurante_email)
-  
+
   function cadastrar() {
     let dataFormatada = dateFormat.formatDateToStringNoBr(data)
     let mesas = new MesaModel(dataFormatada, hora,
-      qtdMesa, qtdPessoa, codigo, email)   
+      qtdMesa, qtdPessoa, codigo, email)
     mesaService.create(mesas)
-    navigation.navigate('main')
+    Alert.alert(
+      "Sucesso!",
+      "Mesa adicionada com sucesso!",
+      [
+        { text: "OK", onPress: () => navigation.navigate('main') }
+      ],
+      { cancelable: false }
+    )
   }
   return (
 
@@ -59,18 +67,18 @@ export default function inicialScreen({ route, navigation }) {
             format: 'DD/MM/YYYY'
           }}
           value={data}
-          onChangeText={data => {setData(data)}}
+          onChangeText={data => { setData(data) }}
           style={styleCadastro.imput}
         />
 
         <Text style={styleCadastro.txt}>HORA:</Text>
-        <TextInputMask 
+        <TextInputMask
           type={'datetime'}
           options={{
             format: 'HH:mm'
           }}
           style={[styleCadastro.imput, { marginBottom: 20 }]}
-          value={hora} 
+          value={hora}
           onChangeText={TextInput => setHora(TextInput)}
         />
 
