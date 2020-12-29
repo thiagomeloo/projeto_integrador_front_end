@@ -25,6 +25,7 @@ export default function MesaScreen({ route, navigation }) {
   const [listaMesas, setListaMesas] = useState([])
   const [listaMesasUpdate, setListaMesasUpdate] = useState(true)
 
+
   async function loadDados() {
     if (listaMesasUpdate) {
       await mesaService.all().then((m) => {

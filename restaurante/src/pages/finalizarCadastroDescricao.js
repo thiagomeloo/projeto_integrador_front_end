@@ -26,9 +26,9 @@ export default function inicialScreen({ route, navigation }) {
         .then(result =>{
             
             restaurante.restaurante_codigo = result.data.restaurante_codigo
+            navigation.navigate('main',restaurante)
             
         })
-        navigation.navigate('main',restaurante)
          
           
       }

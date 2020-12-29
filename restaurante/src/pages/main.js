@@ -22,13 +22,8 @@ import restauranteService from '../services/restauranteService'
 
 
 export default function mainScreen({route, navigation }) {
-  
-  if(route.params.restaurante_codigo == null){
-    restauranteService.findByEmail(route.params.email)
-    .then(r=>{
-      route.params = r
-    })
-  }
+  //console.log(route.params)
+
   
   return (
     <Tab.Navigator
